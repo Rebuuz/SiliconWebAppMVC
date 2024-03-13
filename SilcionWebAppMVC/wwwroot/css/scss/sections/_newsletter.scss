@@ -1,0 +1,166 @@
+#newsletter {
+    background-color: $gray-100;
+    
+    .container {
+        @include lg {
+            padding-top: 2rem;
+            max-width: 900px;
+            text-align: left;
+        }
+        
+        
+        .heading {
+
+            @include lg {
+                display: flex;
+                gap: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+
+            h1 {
+                @include h1;
+            }
+        }
+
+        .sign-up-checkboxes {
+            @include lg {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+            
+            h5 {
+                @include h5;
+                max-width: 196px;
+            }
+
+            .checkbox-items {
+
+                @include lg {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    gap: 1rem;
+                }
+                
+
+                .item {
+                    @include lg {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                    }
+                    
+
+                    input[type=checkbox] {
+                        @include lg {
+                            width: 18px;
+                            height: 18px;
+                            padding: .5rem;
+                            border: solid 2px $gray-500;
+                            box-shadow: none;
+                            margin: 0;
+                        }
+                        
+                    }
+
+                    input[type=checkbox]:checked {
+                        @include lg {
+                            background-color: $theme;
+                            border: $theme 2px solid;
+                        }
+                        
+                    }
+                    
+                    label {
+                        @include text-s;
+                        color: $gray-700;
+                    }
+                    
+                }
+            }
+        }
+
+        .email-signup {
+            @include lg {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding-top: 2rem;
+            }
+
+            .email {
+                @include lg {
+                    display: flex;
+                    align-items: center;
+                    gap: 2rem;
+                }
+                
+
+                .input-container {
+                    @include lg {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                    }
+                    
+                    
+                    i {
+                        @include lg {
+                            position: absolute;
+                            padding-left: 1rem;
+                            color: $gray-500;
+                        }
+                        
+                    }
+                    
+                    input {
+                        @include lg {
+                            border-radius: 8px;
+                            width: 688px; 
+                            padding-left: 3rem;
+                            height: 40px;
+                            border: 1px $gray-400 solid;
+                        }
+                        
+
+                        &::placeholder {
+                            @include text-m;
+                            color: $gray-500;
+                        }
+                    }
+                }
+
+
+                .button {
+                    @include lg {
+                        margin-left: 10px;
+                    }   
+                    
+                }
+                  
+            }
+                
+            .policy {
+                @include lg {
+                    padding-top: 1rem;
+                    text-align: left;
+                }
+
+                p {
+                    @include text-s;
+                    color: $gray-600;
+
+                    span {
+                        color: $theme;
+                    }
+
+                    a {
+                        color: $theme;
+                    }
+                }
+            }
+        }      
+    }
+}

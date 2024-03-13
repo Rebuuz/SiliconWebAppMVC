@@ -1,0 +1,39 @@
+﻿@model ShowcaseViewModel
+
+
+<!--Showcase partial view-->
+@* <section id="showcase">
+    <img src="@Model.ShowcaseImage.ImageUrl" alt="@Model.ShowcaseImage.AltText" class="background-image">
+    <div class="container">
+        <div class="content">
+            <h1>@Model.Title</h1>
+            <p>@Model.Text</p>
+            <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName">@Model.Link.Text</a>
+            <h6>@Model.BrandsText</h6>
+            <div class="brands">
+                <img src="/images/brand-logo-1.svg" alt="">
+                <img src="/images/brand-logo-2.svg" alt="">
+                <img src="/images/brand-logo-3.svg" alt="">
+                <img src="/images/brand-logo-4.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section> *@
+
+<section id="showcase">
+    <img src="/images/showcase-taskmaster.svg" alt="Lägg till text här" class="background-image">
+    <div class="container">
+        <div class="content">
+            <h1>Task Management Assistant You Gonna Love</h1>
+            <p>We offer you a new generation of task management system. Plan, manage & track all your tasks in one flexible tool.</p>
+            <a href="#" class="btn-theme-s">Get started for free</a>
+            <h6>Largest companies use our tool to work efficiently</h6>
+            <div class="brands">
+                <img src="/images/brand-logo-1.svg" alt="">
+                <img src="/images/brand-logo-2.svg" alt="">
+                <img src="/images/brand-logo-3.svg" alt="">
+                <img src="/images/brand-logo-4.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>

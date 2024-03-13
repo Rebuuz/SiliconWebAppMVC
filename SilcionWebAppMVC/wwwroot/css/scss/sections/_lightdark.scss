@@ -1,0 +1,110 @@
+#light-dark-mode {
+    @include lg {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+    }
+   
+
+    .content {
+
+        @include lg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+
+        .dark {
+
+            @include lg {
+                position: relative;
+                background-color: $gray-900;
+                height: 988px;
+                width: 50vw;
+                padding-top: 7rem;
+            }
+            
+    
+            .left-text {
+
+                @include lg {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+                       
+                h1 {
+    
+                    @include h1;
+                    color: white;
+                    position: absolute;
+                    padding-right: .5rem;
+                    margin: 0;
+                }
+            }
+        }
+    
+        .light {
+
+            @include lg {
+                background-color: white;
+                position: relative;
+                height: 988px;
+                width: 50vw; 
+                padding-top: 7.1rem; 
+            }
+            
+    
+            .right-text {
+    
+                h1 {
+                    @include h1;
+                    padding-left: .5rem;
+                    margin: 0;
+                    color: $gray-900;
+                }
+        
+            }
+        }
+    
+        .center-image {
+
+            @include lg {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+
+            .image-div {
+
+                @include lg {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+        
+                img {
+
+                    @include lg {
+                        position: absolute;
+                        z-index: 1;
+                    }
+
+                }
+
+                .mockup-img {
+
+                    @include lg {
+                        padding-top: 10rem;
+                    }
+                    
+                }
+
+
+            }
+        }
+    }
+}

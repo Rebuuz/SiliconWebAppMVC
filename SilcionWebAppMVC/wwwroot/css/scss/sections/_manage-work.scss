@@ -1,0 +1,40 @@
+#manage-work {
+    margin-top: 3rem;
+
+    .container {
+
+        @include lg { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        
+        .content {
+
+            @include lg {
+                
+                h2 {
+                    @include h2;
+                    margin-bottom: 1.5rem;
+                }
+    
+                p {
+                    @include text-m;
+    
+                    i {
+                        color: $theme;
+                        margin-right: 1rem;
+                    }
+                }
+    
+            }
+
+            button {
+                margin-top: 3rem;
+            }
+
+        }
+    }
+
+}

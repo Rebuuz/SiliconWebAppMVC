@@ -1,0 +1,100 @@
+#download {
+    background-color: $gray-100;
+    display: flex;
+    
+    @include lg {  
+        align-items: center;
+        justify-content: center;
+    }
+    
+
+    .container {
+        display: flex;
+        background-color: $gray-200;
+
+        @include lg {
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1296px;
+            border-radius: 8px;
+            padding: 5rem 10rem;
+        }
+        
+
+        .content {
+            
+            @include lg {
+                max-width: 400px;
+            }
+
+            h1  {
+                @include h1;
+                line-height: 3rem;
+            }
+
+            .box {
+                display: flex;
+                width: 100%;
+
+                @include lg {
+                    justify-content: space-between;
+                    padding-bottom: 2rem;
+                }
+
+                .box-items {
+                    display: flex;
+
+                    @include lg {
+                        flex-direction: column;
+                    }
+
+                    .items {
+                        display: flex;
+                        
+                        @include lg {
+                            flex-direction: column;
+                        }
+
+
+                        p {
+                            @include text-m;
+                            padding-top: 1rem;
+                            margin-bottom: .5rem;
+
+                        }
+
+                        .stars {
+                            color: $warning;
+                            margin-bottom: 1rem;
+                        }
+                    }
+
+                    .download-info {
+
+                        h4, p {
+                            margin: 0;
+                        }
+
+                        h4 {
+                            @include h4;
+                        }
+
+                        p {
+                            @include text-m;
+                            color: $gray-800;
+                        }
+                        
+                    }
+
+                }
+
+                img {
+                    align-self: flex-end;
+                    
+                }
+                
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,196 @@
+#showcase {
+    margin-bottom: 80px;
+    position: relative; //nytt
+
+    /*display: flex;*/
+    /*flex-direction: row-reverse;
+        align-items: center;*/
+    /*justify-content: flex-end;
+    margin-bottom: 0px;*/
+
+    @include lg {
+        display: flex;
+ /*       flex-direction: row-reverse;
+        align-items: center;*/
+        justify-content: flex-end;
+        margin-bottom: 0px;
+    }
+
+    img {
+        width: 100%;
+        position: relative; //nytt
+        z-index: -1; //nytt
+
+        @include lg {
+            display: block;
+            z-index: auto;
+            width: 45%;
+        }
+    }
+
+    .container {
+        height: 100%;
+        /*display: flex;*/
+
+        @include lg {
+            position: absolute; //nytt
+            left: 0;
+            right: 0;
+            /*justify-content: center;
+            width: 100%;*/
+        }
+
+        .content {
+            margin-top: 0px;
+            width: 100%;
+            text-align: center;
+
+            @include lg {
+                margin-top: 100px;
+                /*max-width: 565px;*/
+                width: 40%; //nytt
+                text-align: left;
+            }
+
+            h1 {
+                @include h2;
+
+                @include lg {
+                    @include d4;
+                }
+            }
+
+            p {
+                margin: 20px 0 40px 0;
+                @include text-m;
+
+                @include lg {
+                    margin: 40px 0 50px 0;
+                    @include text-lg;
+                }
+            }
+
+            .btn-theme-s {
+                display: inline-block;
+            }
+
+            h6 {
+                margin: 150px 0 30px 0;
+                display: none;
+
+                @include lg {
+                    margin: 100px 0 30px 0;
+                    display: flex;
+                }
+            }
+
+            .brands {
+                display: none;
+                gap: 30px;
+
+                @include lg {
+                    display: flex;
+                }
+
+                img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}
+
+/*.showcase {
+    margin-bottom: 80px;*/
+   /* position: relative; //nytt*/
+
+    /*@include lg {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;*/
+/*        justify-content: flex-end;*/
+        /*margin-bottom: 0px;
+    }
+    
+    img {
+        width: 100%;*/
+/*        position: relative; //nytt
+        z-index: -1; //nytt*/
+        
+        /*@include lg {
+            width: 45%;
+        }
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+
+        @include lg {*/
+ /*           position: absolute; //nytt*/
+            /*left: 0;
+            right: 0;
+            justify-content: center;
+            width: 100%;
+
+        }
+
+        .content {
+            margin-top: 0px;
+            width: 100%;
+            text-align: center; 
+
+            @include lg {
+                margin-top: 100px;
+                max-width: 565px;*/
+/*                width: 40%; //nytt*/
+                /*text-align: left;
+            }
+
+            h1 {
+                @include h2;
+
+                @include lg {
+                    @include d4;
+                }
+            }
+
+            p {
+                margin: 20px 0 40px 0;
+                @include text-m;
+
+                @include lg {
+                    margin: 40px 0 50px 0;
+                    @include text-lg;
+                }
+            }
+
+            .btn-theme-s {
+                display: inline-block;
+            }
+
+            h6 {
+                margin: 150px 0 30px 0;
+                display: none;
+
+                @include lg {
+                    margin: 100px 0 30px 0;
+                    display: flex;
+                }
+            }
+
+            .brands {
+                display: none;
+                gap: 30px;
+
+                @include lg {
+                    display: flex;
+                }
+
+                img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}*/

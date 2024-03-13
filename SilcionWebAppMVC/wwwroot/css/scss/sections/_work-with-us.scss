@@ -1,0 +1,28 @@
+#work-with-us {
+    margin-top: 4rem;
+
+    .container {
+        background-color: $gray-100;
+        max-width: 1296px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        border-radius: 10px;
+
+        .content {
+            max-width: 526px;
+
+            h5 {
+                @include text-lead;
+
+            }
+
+            a {
+                max-width: 162px;
+                margin-top: 2rem;
+            }
+        }
+        
+    }
+}
