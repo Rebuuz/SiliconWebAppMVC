@@ -4,7 +4,7 @@ namespace SiliconMVC.Controllers
 {
     public class AuthController : Controller
     {
-        public IActionResult Index()
+        public IActionResult SignUp()
         {
             return View();
         }
