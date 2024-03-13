@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SiliconMVC.Controllers
+namespace SiliconMVC.Controllers;
+
+public class AuthController : Controller
 {
-    public class AuthController : Controller
+    public IActionResult SignUp()
     {
-        public IActionResult SignUp()
-        {
-            return View();
-        }
+        return View();
     }
 }
