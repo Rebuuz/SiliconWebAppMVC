@@ -77,8 +77,8 @@
         justify-content: center;
         align-items: center;
         gap: 1rem 2rem;
-        grid-template-columns: 1fr;
-  
+        /*grid-template-columns: repeat(12, 1fr);*/
+
 
         @include lg {
             width: 60%;
@@ -94,9 +94,31 @@
             margin-bottom: 1rem !important;
         }
 
-        label {
-            font-weight: 700;
+        div {
+            display: grid;
+
+            label {
+                font-weight: 700;
+            }
+
+            span {
+                padding: .5rem;
+                color: $danger;
+            }
+
+            
         }
+
+        .form-check {
+            display: grid;
+            grid-template-columns: 1fr ;
+            align-content: center;
+
+            label {
+                font-weight: 400;
+            }
+        }
+
 
         .btn-theme-s {
             width: 100%;

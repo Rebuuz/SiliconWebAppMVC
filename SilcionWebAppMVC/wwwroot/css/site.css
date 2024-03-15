@@ -1557,7 +1557,7 @@ img {
   justify-content: center;
   align-items: center;
   gap: 1rem 2rem;
-  grid-template-columns: 1fr;
+  /*grid-template-columns: repeat(12, 1fr);*/
 }
 @media (min-width: 992px) {
   #signup .container {
@@ -1572,8 +1572,23 @@ img {
   margin-top: 0;
   margin-bottom: 1rem !important;
 }
-#signup .container label {
+#signup .container div {
+  display: grid;
+}
+#signup .container div label {
   font-weight: 700;
+}
+#signup .container div span {
+  padding: 0.5rem;
+  color: #EF4444;
+}
+#signup .container .form-check {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+}
+#signup .container .form-check label {
+  font-weight: 400;
 }
 #signup .container .btn-theme-s {
   width: 100%;
