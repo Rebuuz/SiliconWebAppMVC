@@ -244,6 +244,7 @@ a:hover {
   color: #FFFFFF;
   padding-top: 10px;
   padding-bottom: 13px;
+  border: none;
 }
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
@@ -372,70 +373,6 @@ a:hover {
   text-decoration: none;
   background: #565973;
   color: #FFFFFF;
-}
-
-form {
-  width: 100%;
-  display: grid;
-}
-form .input-group {
-  display: grid;
-}
-form .checkbox-group {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.5rem;
-}
-form .checkbox-group input[type=checkbox] {
-  height: 1.2rem;
-  width: 1.2rem;
-  border: 0.063rem solid red;
-}
-form .checkbox-group label {
-  margin: 0;
-  font-weight: 400;
-}
-form .checkbox-group span.field-validation-error {
-  position: static;
-  top: 0;
-  right: 0;
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px !important;
-  color: #EF4444;
-}
-form label {
-  margin-bottom: 0.188rem;
-  font-weight: 700;
-}
-form input {
-  padding: 1rem;
-  border-radius: 0.5rem !important;
-  border: 0.063rem solid #D4D7E5;
-}
-form input::placeholder {
-  opacity: 0.4;
-}
-form input.input-validation-error {
-  border: 0.063rem wolid #EF4444 !important;
-  color: #EF4444;
-}
-form input.input-validation-error::placeholder {
-  color: #EF4444;
-}
-form span.field-validation-error {
-  position: absolute;
-  top: 0;
-  right: 0;
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px !important;
-  color: #EF4444;
 }
 
 header {
@@ -1543,165 +1480,105 @@ img {
   padding: 1rem;
 }
 
-#signup {
-  height: 100%;
-}
-#signup .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-@media (min-width: 992px) {
-  #signup .container {
-    width: 60%;
-  }
-}
-@media (min-width: 1200px) {
-  #signup .container {
-    width: 40%;
-  }
-}
-#signup .container form {
-  padding: 1rem;
-}
-#signup .container form .content {
-  display: grid;
-  gap: 1rem 2rem;
-  grid-template-columns: 1fr;
-  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
-}
-@media (min-width: 768px) {
-  #signup .container form .content {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
-  }
-}
-#signup .container form .content #form-firstname {
-  grid-area: firstname;
-}
-#signup .container form .content #form-lastname {
-  grid-area: lastname;
-}
-#signup .container form .content #form-email {
-  grid-area: email;
-}
-#signup .container form .content #form-password {
-  grid-area: password;
-}
-#signup .container form .content #form-confirmPassword {
-  grid-area: confirm;
-}
-#signup .container form .content #form-terms {
-  grid-area: terms;
-}
-#signup .container form .content #form-button {
-  grid-area: button;
-}
-
 /*#signup {
-    margin-top: 6rem;
+    height: 100%;
 
     .container {
-        max-width: 526px;
-        margin-bottom: 10rem; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
 
-        p {
-            margin-bottom: 1rem;
+        @include lg {
+            width: 60%;
         }
 
-        .name-input {
-            display: flex;
-            gap: 1.5rem;
-
-            .firstname {
-                input {
-                    width: 251px;
-                }
-            }
-
-            .lastname {
-                input {
-                    width: 251px;
-                }
-            }
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: .5rem;
-        }
-
-        input {
-            margin-bottom: 1rem;
-            border: $gray-400 1px solid;
-            border-radius: 8px;
-            padding: 1rem;
-            height: 52px;
-            width: 526px;
-
-            &::placeholder {
-                color: $gray-500;
-            }
-
-            &:focus {
-                border: 1px solid $theme;
-                outline: none;
-            }
+        @include xl {
+            width: 40%;
         }
 
         form {
-            display: grid;
-        }
+            padding: 1rem;
+            padding-top: 5rem;
 
-        .checkbox {
-            padding-bottom: 1rem;
-            display: flex;
-            align-items: center;
+            .content {
+                display: grid;
+                gap: 1rem 2rem;
+                grid-template-columns: 1fr;
+                grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
 
-            input[type=checkbox] {
-                @include lg {
-                    width: 18px;
-                    height: 18px;
-                    padding: .5rem;
-                    border: solid 2px $gray-500;
-                    box-shadow: none;
-                    margin: 0;
+                @include md {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
                 }
 
-            }
-
-            input[type=checkbox]:checked {
-                @include lg {
-                    background-color: $theme;
-                    border: $theme 2px solid;
+                #form-firstname {
+                    grid-area: firstname;
                 }
 
-            }
+                #form-lastname {
+                    grid-area: lastname;
+                }
 
-            label {
-                padding-left: .5rem;
-                margin: 0;
-                @include text-m;
-            }
-        }
+                #form-email {
+                    grid-area: email;
+                }
 
-        .signinbottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+                #form-password {
+                    grid-area: password;
+                }
 
-            .btn-theme-s {
-                width: 100%;
-            }
+                #form-confirmPassword {
+                    grid-area: confirm;
+                }
 
-            .password {
-                padding: 1rem;
+                #form-terms {
+                    grid-area: terms;
+                }
+
+                #form-button {
+                    grid-area: button;
+                    border: none;
+                }
+
+                .btn-theme-s {
+                    border: none !important;
+                }
+
             }
         }
     }
 }*/
+#signup {
+  margin-top: 6rem;
+}
+#signup .container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #signup .container {
+    width: 60%;
+    max-width: 600px;
+  }
+}
+#signup .container h1 {
+  margin: 0;
+}
+#signup .container p {
+  margin-top: 0;
+  margin-bottom: 1rem !important;
+}
+#signup .container label {
+  font-weight: 700;
+}
+#signup .container .btn-theme-s {
+  width: 100%;
+}
+
 #account-details {
   padding-bottom: 5rem;
 }
