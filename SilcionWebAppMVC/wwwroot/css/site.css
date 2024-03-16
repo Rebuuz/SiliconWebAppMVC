@@ -1578,17 +1578,46 @@ img {
 #signup .container div label {
   font-weight: 700;
 }
+#signup .container div input:focus {
+  outline: none;
+}
+#signup .container div input::placeholder {
+  opacity: 0.4;
+}
 #signup .container div span {
   padding: 0.5rem;
   color: #EF4444;
 }
 #signup .container .form-check {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  align-items: center;
   align-content: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+@media (min-width: 992px) {
+  #signup .container .form-check input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    padding: 0.5rem;
+    border: solid 2px #B4B7C9;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 2px;
+  }
+}
+@media (min-width: 992px) {
+  #signup .container .form-check input[type=checkbox]:checked {
+    background-color: #6366F1;
+    border: #6366F1 2px solid;
+  }
 }
 #signup .container .form-check label {
   font-weight: 400;
+}
+#signup .container .validation-msg {
+  display: flex;
+  flex-direction: column;
 }
 #signup .container .btn-theme-s {
   width: 100%;
