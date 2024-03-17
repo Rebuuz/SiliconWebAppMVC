@@ -1579,7 +1579,8 @@ img {
   font-weight: 700;
 }
 #signup .container div input:focus {
-  outline: none;
+  box-shadow: none;
+  border: 1px solid #6366F1;
 }
 #signup .container div input::placeholder {
   opacity: 0.4;
