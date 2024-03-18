@@ -1,4 +1,4 @@
-#signin {
+/*#signin {
     margin-top: 6rem;
 
     .container {
@@ -82,6 +82,108 @@
             .password {
                 padding: 1rem;
             }
+        }
+    }
+}*/
+
+#signin {
+    margin-top: 10rem;
+    margin-bottom: 6rem;
+
+    .container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem 2rem;
+        
+
+        @include lg {
+            width: 60%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem !important;
+        }
+
+
+
+        div {
+            display: grid;
+
+            label {
+                font-weight: 700;
+            }
+
+            input {
+                height: 52px;
+
+                &:focus {
+                    box-shadow: none;
+                    border: 1px solid $theme;
+                }
+
+                &::placeholder {
+                    opacity: .4;
+                }
+            }
+
+            span {
+                padding: .5rem;
+                color: $danger;
+            }
+        }
+
+        .form-remember {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            gap: .5rem;
+            padding: 0;
+
+            input[type=checkbox] {
+                @include lg {
+                    width: 18px;
+                    height: 18px;
+                    padding: .5rem;
+                    border: solid 2px $gray-500;
+                    box-shadow: none;
+                    margin: 0;
+                    border-radius: 2px;
+                }
+            }
+
+            input[type=checkbox]:checked {
+                @include lg {
+                    background-color: $theme;
+                    border: $theme 2px solid;
+                }
+            }
+
+            label {
+                font-weight: 400;
+            }
+        }
+
+        .validation-msg {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .btn-theme-s {
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        #form-forgot-password {
+            color: $theme;
+            padding-top: 1rem;
         }
     }
 }
