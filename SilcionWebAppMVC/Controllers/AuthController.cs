@@ -56,11 +56,20 @@ public class AuthController : Controller
     [HttpPost]
     public IActionResult SignIn(SignInViewModel viewModel)
     {
-        ///If working, go to account page
+        ///If working, redirect to account page. If email or password is incorrect, show the message
 
         if (!ModelState.IsValid)
+        {
             return View(viewModel);
+        }
 
-        return RedirectToAction("Account", "Auth");
+        //var success = _authService.SignIn(viewModel.Form);
+        //if(result)
+        //return RedirectToAction("Account", "Index");
+
+        viewModel.ErrorMsg = "Incorrect email or password.";
+        return View(viewModel);
+
+        
     }
 }

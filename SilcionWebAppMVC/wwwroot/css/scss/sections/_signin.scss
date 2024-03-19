@@ -1,91 +1,3 @@
-/*#signin {
-    margin-top: 6rem;
-
-    .container {
-        max-width: 526px;
-        margin-bottom: 10rem; 
-
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        form {
-            display: flex;
-            flex-direction: column;
-
-            label {
-                font-weight: bold;
-                margin-bottom: .5rem;
-            }
-
-            input {
-                margin-bottom: 1rem;
-                border: $gray-400 1px solid;
-                border-radius: 8px;
-                padding: 1rem;
-                max-width: 526px;
-                height: 52px;
-
-                &::placeholder {
-                    color: $gray-500;
-                }
-                
-                &:focus {
-                    border: 1px solid $theme;
-                    outline: none;
-                }
-            }
-
-        }
-
-        .checkbox {
-            padding-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            
-            input[type=checkbox] {
-                @include lg {
-                    width: 18px;
-                    height: 18px;
-                    padding: .5rem;
-                    border: solid 2px $gray-500;
-                    box-shadow: none;
-                    margin: 0;
-                }
-                
-            }
-
-            input[type=checkbox]:checked {
-                @include lg {
-                    background-color: $theme;
-                    border: $theme 2px solid;
-                }
-                
-            }
-
-            label {
-                padding-left: .5rem;
-                margin: 0;
-            }
-        }
-
-        .signinbottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            .btn-theme-s {
-                width: 100%;
-            }
-
-            .password {
-                padding: 1rem;
-            }
-        }
-    }
-}*/
-
 #signin {
     margin-top: 10rem;
     margin-bottom: 6rem;
@@ -111,7 +23,9 @@
             margin-bottom: 1rem !important;
         }
 
-
+        #error-msg {
+            color: $danger;
+        }
 
         div {
             display: grid;

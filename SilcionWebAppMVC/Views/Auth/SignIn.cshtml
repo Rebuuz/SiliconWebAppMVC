@@ -6,7 +6,7 @@
 <section id="signin">
     <div class="container">
         <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate class="row g-3 needs-validation">
-            <div asp-validation-summary="All"></div>
+            <div id="error-msg">@Model.ErrorMsg</div>
 
             <h1>Welcome Back</h1>
             <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
