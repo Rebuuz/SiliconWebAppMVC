@@ -1410,74 +1410,89 @@ img {
 }
 
 #signin {
-  margin-top: 6rem;
+  margin-top: 10rem;
+  margin-bottom: 6rem;
 }
 #signin .container {
-  max-width: 526px;
-  margin-bottom: 10rem;
-}
-#signin .container p {
-  margin-bottom: 1rem;
-}
-#signin .container form {
-  display: flex;
-  flex-direction: column;
-}
-#signin .container form label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-#signin .container form input {
-  margin-bottom: 1rem;
-  border: #D4D7E5 1px solid;
-  border-radius: 8px;
-  padding: 1rem;
-  max-width: 526px;
-  height: 52px;
-}
-#signin .container form input::placeholder {
-  color: #B4B7C9;
-}
-#signin .container form input:focus {
-  border: 1px solid #6366F1;
-  outline: none;
-}
-#signin .container .checkbox {
-  padding-bottom: 1rem;
-  display: flex;
+  display: grid;
+  justify-content: center;
   align-items: center;
+  gap: 1rem 2rem;
 }
 @media (min-width: 992px) {
-  #signin .container .checkbox input[type=checkbox] {
+  #signin .container {
+    width: 60%;
+    max-width: 600px;
+  }
+}
+#signin .container h1 {
+  margin: 0;
+}
+#signin .container p {
+  margin-top: 0;
+  margin-bottom: 1rem !important;
+}
+#signin .container #error-msg {
+  color: #EF4444;
+}
+#signin .container div {
+  display: grid;
+}
+#signin .container div label {
+  font-weight: 700;
+}
+#signin .container div input {
+  height: 52px;
+}
+#signin .container div input:focus {
+  box-shadow: none;
+  border: 1px solid #6366F1;
+}
+#signin .container div input::placeholder {
+  opacity: 0.4;
+}
+#signin .container div span {
+  padding: 0.5rem;
+  color: #EF4444;
+}
+#signin .container .form-remember {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+@media (min-width: 992px) {
+  #signin .container .form-remember input[type=checkbox] {
     width: 18px;
     height: 18px;
     padding: 0.5rem;
     border: solid 2px #B4B7C9;
     box-shadow: none;
     margin: 0;
+    border-radius: 2px;
   }
 }
 @media (min-width: 992px) {
-  #signin .container .checkbox input[type=checkbox]:checked {
+  #signin .container .form-remember input[type=checkbox]:checked {
     background-color: #6366F1;
     border: #6366F1 2px solid;
   }
 }
-#signin .container .checkbox label {
-  padding-left: 0.5rem;
-  margin: 0;
+#signin .container .form-remember label {
+  font-weight: 400;
 }
-#signin .container .signinbottom {
+#signin .container .validation-msg {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-#signin .container .signinbottom .btn-theme-s {
+#signin .container .btn-theme-s {
+  margin-top: 1rem;
   width: 100%;
 }
-#signin .container .signinbottom .password {
-  padding: 1rem;
+#signin .container #form-forgot-password {
+  color: #6366F1;
+  padding-top: 1rem;
 }
 
 /*#signup {
