@@ -63,6 +63,7 @@ public class AuthController : Controller
             return View(viewModel);
         }
 
+        ///Add this later - check if sign in information is correct and then move to correct website. 
         //var success = _authService.SignIn(viewModel.Form);
         //if(result)
         //return RedirectToAction("Account", "Index");
