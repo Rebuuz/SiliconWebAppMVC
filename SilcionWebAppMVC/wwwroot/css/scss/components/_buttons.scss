@@ -29,6 +29,7 @@
     color: $white;
     padding-top: 10px;
     padding-bottom: 13px;
+    border: none;
 
     &:hover {
         @include theme-secondary-shadow;
