@@ -1,4 +1,94 @@
+
+
+
 #account-details {
+    margin-top: 6rem;
+    height: 100%;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        gap: 3rem 5rem;
+
+        @include lg {
+            width: 1294px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem !important;
+        }
+
+        .content-left {
+            width: 318px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-right: 5rem;
+            border-right: 1px solid $gray-300;
+
+            .avatar {
+                position: relative;
+
+                img {
+                    display: block;
+                }
+
+                a {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: white;
+                    border: 1px $gray-300 solid;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+                    i {
+                        color: $gray-800;
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            .account-info {
+                padding-top: 1rem;
+
+                h5 {
+                    margin: 0;
+                }
+
+                p {
+                    color: $gray-700;
+                }
+            }
+
+            button {
+                text-align: left;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .content-right {
+            max-width: 856px;
+            padding-left: 5rem;
+        }
+    }
+}
+
+/*#account-details {
     padding-bottom: 5rem;
     
     .container {
@@ -201,4 +291,4 @@
             
         }
     }
-}
+}*/

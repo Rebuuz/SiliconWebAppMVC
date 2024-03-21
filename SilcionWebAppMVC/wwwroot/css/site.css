@@ -1640,22 +1640,37 @@ img {
 }
 
 #account-details {
-  padding-bottom: 5rem;
+  margin-top: 6rem;
+  height: 100%;
 }
 #account-details .container {
-  justify-content: center;
-  gap: 4rem;
-  padding-top: 4rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 3rem 5rem;
+}
+@media (min-width: 992px) {
+  #account-details .container {
+    width: 1294px;
+  }
+}
+#account-details .container h1 {
+  margin: 0;
+}
+#account-details .container p {
+  margin-top: 0;
+  margin-bottom: 1rem !important;
 }
 #account-details .container .content-left {
-  max-width: 318px;
+  width: 318px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0;
+  margin-right: 5rem;
+  border-right: 1px solid #E2E5F1;
 }
 #account-details .container .content-left .avatar {
   position: relative;
@@ -1689,144 +1704,216 @@ img {
 #account-details .container .content-left .account-info p {
   color: #565973;
 }
-#account-details .container .content-left .btn-theme-s,
-#account-details .container .content-left .sign-out {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-#account-details .container .content-left .btn-theme-s a,
-#account-details .container .content-left .sign-out a {
-  display: flex;
-  align-items: center;
+#account-details .container .content-left button {
+  text-align: left;
+  margin-bottom: 2rem;
 }
 #account-details .container .content-right {
   max-width: 856px;
-  border-left: 1px solid #E2E5F1;
   padding-left: 5rem;
 }
-#account-details .container .content-right h5 {
-  color: #6366F1;
-}
-#account-details .container .content-right .top-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 1.5rem;
-}
-#account-details .container .content-right .top-form form {
-  display: flex;
-  flex-direction: column;
-}
-#account-details .container .content-right .top-form form label {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-weight: bold;
-  color: #0B0F19;
-  font-size: 16px;
-  padding-bottom: 0.5rem;
-}
-#account-details .container .content-right .top-form form input {
-  width: 416px;
-  border: 1px solid #D4D7E5;
-  padding: 1rem;
-  border-radius: 8px;
-  height: 52px;
-}
-#account-details .container .content-right .text-area {
-  padding-top: 2rem;
-}
-#account-details .container .content-right .text-area form {
-  display: flex;
-  flex-direction: column;
-}
-#account-details .container .content-right .text-area form label {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-weight: bold;
-  color: #0B0F19;
-  font-size: 16px;
-  padding-bottom: 0.5rem;
-}
-#account-details .container .content-right .text-area form label span {
-  color: #9397AD;
-}
-#account-details .container .content-right .text-area form textarea {
-  width: 856px;
-  border: 1px solid #D4D7E5;
-  padding: 1rem;
-  border-radius: 8px;
-}
-#account-details .container .content-right .buttons {
-  padding-top: 2rem;
-  display: flex;
-  gap: 1rem;
-  border-bottom: 1px #E2E5F1 solid;
-  padding-bottom: 2rem;
-  width: 100%;
-}
-#account-details .container .content-right .bottom-form {
-  display: flex;
-  flex-direction: column;
-}
-#account-details .container .content-right .bottom-form h5 {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-}
-#account-details .container .content-right .bottom-form .bottom-form-address {
-  gap: 1.5rem;
-}
-#account-details .container .content-right .bottom-form .bottom-form-address form {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
-}
-#account-details .container .content-right .bottom-form .bottom-form-address form label {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-weight: bold;
-  color: #0B0F19;
-  font-size: 16px;
-  padding-bottom: 0.5rem;
-}
-#account-details .container .content-right .bottom-form .bottom-form-address form input {
-  width: 856px;
-  border: 1px solid #D4D7E5;
-  padding: 1rem;
-  border-radius: 8px;
-  height: 52px;
-}
-#account-details .container .content-right .bottom-form .postal-city {
-  display: flex;
-  gap: 1.5rem;
-}
-#account-details .container .content-right .bottom-form .postal-city form {
-  display: flex;
-  flex-direction: column;
-}
-#account-details .container .content-right .bottom-form .postal-city form label {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-weight: bold;
-  color: #0B0F19;
-  font-size: 16px;
-  padding-bottom: 0.5rem;
-}
-#account-details .container .content-right .bottom-form .postal-city form input {
-  width: 416px;
-  border: 1px solid #D4D7E5;
-  padding: 1rem;
-  border-radius: 8px;
-  height: 52px;
-}
-#account-details .container .content-right .bottom-form .buttons {
-  border: none;
-}
+
+/*#account-details {
+    padding-bottom: 5rem;
+
+    .container {
+        justify-content: center;
+        gap: 4rem;
+        padding-top: 4rem;
+        display: flex;
+
+
+        .content-left {
+            max-width: 318px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0;    
+
+            .avatar {
+                position: relative;
+
+                img {
+                    display: block;
+                }
+
+                a {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: white;
+                    border: 1px $gray-300 solid;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+                    i {
+                        color: $gray-800;
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            .account-info {
+                padding-top: 1rem;
+
+                h5 {
+                    margin: 0;
+                }
+
+                p {
+                  color: $gray-700;  
+                }
+            }
+
+            .btn-theme-s,
+            .sign-out {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                a {
+                    display: flex;
+                    align-items: center;
+
+                }
+            }
+        }
+
+        .content-right {
+            max-width: 856px;
+            border-left: 1px solid $gray-300;
+            padding-left: 5rem;
+
+            h5 {
+                color: $theme;
+
+            }
+
+            .top-form {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 1.5rem;
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        @include standard-label;
+                    }
+
+                    input {
+                        width: 416px;
+                        border: 1px solid $gray-400;
+                        padding: 1rem;
+                        border-radius: 8px;
+                        height: 52px;
+                    }
+                }
+            }
+
+            .text-area {
+                padding-top: 2rem;
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        @include standard-label;
+
+                        span {
+                           color: $gray-600; 
+                        }
+                    }
+
+                    textarea {
+                        width: 856px;
+                        border: 1px solid $gray-400;
+                        padding: 1rem;
+                        border-radius: 8px;
+
+                    }
+
+
+                }
+            }
+
+            .buttons {
+                padding-top: 2rem;
+                display: flex;
+                gap: 1rem;
+                border-bottom: 1px $gray-300 solid;
+                padding-bottom: 2rem;
+                width: 100%;
+            }
+
+            .bottom-form {
+                display: flex;
+                flex-direction: column;
+
+                h5 {
+                    padding-top: 2rem;
+                    padding-bottom: 1rem;
+                }
+
+                .bottom-form-address {
+                    gap: 1.5rem;
+
+                    form {
+                        display: flex;
+                        flex-direction: column;
+                        padding-bottom: 1.5rem;
+
+                        label {
+                            @include standard-label;
+                        }
+
+                        input {
+                            width: 856px;
+                            border: 1px solid $gray-400;
+                            padding: 1rem;
+                            border-radius: 8px;
+                            height: 52px; 
+                        }
+                    }
+                }
+
+                .postal-city {
+                    display: flex;
+                    gap: 1.5rem;
+
+                    form {
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            @include standard-label;
+                        }
+
+                        input {
+                            width: 416px;
+                            border: 1px solid $gray-400;
+                            padding: 1rem;
+                            border-radius: 8px;
+                            height: 52px;
+                        }
+                    }
+                }
+
+                .buttons {
+                    border: none;
+                }
+            }
+
+        }
+    }
+}*/

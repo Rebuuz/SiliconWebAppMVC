@@ -1,0 +1,14 @@
+﻿@model AccountDetailsViewModel
+
+<div class="content-left">
+    <div class="avatar">
+        <img src="/images/avatar-img.svg" alt="">
+        <a href="#"><i class="fa-solid fa-rotate-reverse"></i></a>
+    </div>
+    <div class="account-info">
+        <h5>John Doe</h5>
+        <p>john.doe@domain.com</p>
+    </div>
+    <button asp-controller="Account" asp-action="Details" class="btn-theme-s"><i class="fa-regular fa-gear"></i>Account Details</button>
+    <button asp-controller="Account" asp-action="SignOut" class="btn-gray"><i class="fa-regular fa-arrow-right-from-bracket"></i> Sign Out</button>
+</div>

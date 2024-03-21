@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
 
@@ -11,4 +12,12 @@ public class AccountController : Controller
     //{
     //    _accountService = accountService;
     //}
+
+    [Route("/")]
+    public IActionResult Details()
+    {
+        var viewModel = new AccountDetailsViewModel();
+
+        return View(viewModel);
+    }
 }
