@@ -6,9 +6,9 @@
     height: 100%;
 
     .container {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
         justify-content: center;
-        align-items: center;
         height: 100%;
         gap: 3rem 5rem;
 
@@ -26,14 +26,14 @@
         }
 
         .content-left {
-            width: 318px;
+            grid-column: 1 / span 4;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-right: 5rem;
             border-right: 1px solid $gray-300;
+            padding: 0 1rem;
 
             .avatar {
                 position: relative;
@@ -78,12 +78,52 @@
             button {
                 text-align: left;
                 margin-bottom: 2rem;
+                width: 100%;
+                justify-content: flex-start;
             }
         }
 
         .content-right {
             max-width: 856px;
-            padding-left: 5rem;
+            grid-column: 5 / span 8;
+
+            h5 {
+                color: $theme;
+            }
+
+            label {
+                font-weight: 700;
+
+                span {
+                    color: $gray-400;
+                }
+            }
+
+            input {
+
+                &:focus {
+                    box-shadow: none;
+                    border: 1px solid $theme;
+                }
+
+                &::placeholder {
+                    opacity: .4;
+                }
+            }
+
+            textarea {
+                &::placeholder {
+                    opacity: .4;
+                }
+            }
+
+            button {
+                margin-top: 1rem;
+            }
+
+            .btn-gray {
+                max-width: 145px;
+            }
         }
     }
 }
