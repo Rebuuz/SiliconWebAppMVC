@@ -1,22 +1,40 @@
+
+
+
 #account-details {
-    padding-bottom: 5rem;
-    
+    margin-top: 6rem;
+    height: 100%;
+
     .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
         justify-content: center;
-        gap: 4rem;
-        padding-top: 4rem;
-        display: flex;
-        
+        height: 100%;
+        gap: 3rem 5rem;
+
+        @include lg {
+            width: 1294px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem !important;
+        }
 
         .content-left {
-            max-width: 318px;
+            grid-column: 1 / span 4;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin: 0;    
-            
+            border-right: 1px solid $gray-300;
+            padding: 0 1rem;
+
             .avatar {
                 position: relative;
 
@@ -36,7 +54,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    
+
 
                     i {
                         color: $gray-800;
@@ -44,7 +62,7 @@
                     }
                 }
             }
-            
+
             .account-info {
                 padding-top: 1rem;
 
@@ -53,152 +71,64 @@
                 }
 
                 p {
-                  color: $gray-700;  
+                    color: $gray-700;
                 }
             }
 
-            .btn-theme-s,
-            .sign-out {
-                display: flex;
-                align-items: center;
+            button {
+                text-align: left;
+                margin-bottom: 2rem;
+                width: 100%;
                 justify-content: flex-start;
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    
-                }
             }
         }
 
         .content-right {
             max-width: 856px;
-            border-left: 1px solid $gray-300;
-            padding-left: 5rem;
+            grid-column: 5 / span 8;
 
             h5 {
                 color: $theme;
-
             }
 
-            .top-form {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-                gap: 1.5rem;
+            label {
+                font-weight: 700;
 
-                form {
-                    display: flex;
-                    flex-direction: column;
-
-                    label {
-                        @include standard-label;
-                    }
-
-                    input {
-                        width: 416px;
-                        border: 1px solid $gray-400;
-                        padding: 1rem;
-                        border-radius: 8px;
-                        height: 52px;
-                    }
+                span {
+                    color: $gray-400;
                 }
             }
 
-            .text-area {
-                padding-top: 2rem;
-                
-                form {
-                    display: flex;
-                    flex-direction: column;
+            input {
 
-                    label {
-                        @include standard-label;
+                &:focus {
+                    box-shadow: none;
+                    border: 1px solid $theme;
+                }
 
-                        span {
-                           color: $gray-600; 
-                        }
-                    }
+                &::placeholder {
+                    opacity: .4;
+                }
+            }
 
-                    textarea {
-                        width: 856px;
-                        border: 1px solid $gray-400;
-                        padding: 1rem;
-                        border-radius: 8px;
-                        
-                    }
-
-                    
+            textarea {
+                &::placeholder {
+                    opacity: .4;
                 }
             }
 
             .buttons {
-                padding-top: 2rem;
                 display: flex;
+                margin-bottom: 3rem;
                 gap: 1rem;
-                border-bottom: 1px $gray-300 solid;
-                padding-bottom: 2rem;
-                width: 100%;
+                margin-top: 1.5rem;
             }
 
             .bottom-form {
-                display: flex;
-                flex-direction: column;
-                
-                h5 {
-                    padding-top: 2rem;
-                    padding-bottom: 1rem;
-                }
-
-                .bottom-form-address {
-                    gap: 1.5rem;
-
-                    form {
-                        display: flex;
-                        flex-direction: column;
-                        padding-bottom: 1.5rem;
-
-                        label {
-                            @include standard-label;
-                        }
-
-                        input {
-                            width: 856px;
-                            border: 1px solid $gray-400;
-                            padding: 1rem;
-                            border-radius: 8px;
-                            height: 52px; 
-                        }
-                    }
-                }
-
-                .postal-city {
-                    display: flex;
-                    gap: 1.5rem;
-
-                    form {
-                        display: flex;
-                        flex-direction: column;
-
-                        label {
-                            @include standard-label;
-                        }
-
-                        input {
-                            width: 416px;
-                            border: 1px solid $gray-400;
-                            padding: 1rem;
-                            border-radius: 8px;
-                            height: 52px;
-                        }
-                    }
-                }
-
-                .buttons {
-                    border: none;
-                }
+                border-top: 1px $gray-300 solid;
+                padding-top: 2rem;
+                padding-bottom: 4rem;
             }
-            
         }
     }
 }
