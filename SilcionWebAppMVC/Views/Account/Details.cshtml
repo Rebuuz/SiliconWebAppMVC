@@ -10,7 +10,7 @@
 
 
         <div class="content-right">
-            <form method="post" asp-controller="Account" asp-action="Details" novalidate class="row g-3 needs-validation top-form">
+            <form method="post" asp-controller="Account" asp-action="BasicInfo" novalidate class="row g-3 needs-validation top-form">
                 <h1>Account Details</h1>
                 <h5>Basic Info</h5>
                 <div class="col-md-6" id="input-group-1">
@@ -36,13 +36,13 @@
                     <label asp-for="BasicInfo.Bio" class="form-label">Bio <span>(optional)</span></label>
                     <textarea asp-for="BasicInfo.Bio" type="text" class="form-control" placeholder="Enter a short bio..." rows="5"></textarea>
                 </div>
-                <div class="col-12 buttons">
-                    <button type="submit" class="btn-gray">Cancel</button>
+                <div class="buttons">
+                    <button type="reset" class="btn-gray">Cancel</button>
                     <button type="submit" class="btn-theme-s">Save changes</button>
                 </div>
             </form>
 
-            <form method="post" asp-controller="Account" asp-action="Details" novalidate class="row g-3 needs-validation bottom-form">
+            <form method="post" asp-controller="Account" asp-action="AddressInfo" novalidate class="row g-3 needs-validation bottom-form">
                 <h5>Address</h5>
                 <div class="col-12" id="input-group-1">
                     <label asp-for="AddressInfo.AddressLine_1" class="form-label">Address line 1</label>
@@ -60,8 +60,8 @@
                     <label asp-for="AddressInfo.City" class="form-label">City</label>
                     <input asp-for="AddressInfo.City" type="text" class="form-control" placeholder="Enter your city">
                 </div>
-                <div class="col-12 buttons">
-                    <button type="submit" class="btn-gray">Cancel</button>
+                <div class="buttons">
+                    <button type="reset" class="btn-gray">Cancel</button>
                     <button type="submit" class="btn-theme-s">Save changes</button>
                 </div>
             </form>
