@@ -7,32 +7,32 @@
 
 <section id="signup">
     <div class="container">
-        <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate class="row g-3 needs-validation">
+        <form method="post" asp-controller="Auth" asp-action="SignUp" novalidate class="row g-3">
             <h1>Create Account</h1>
             <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
                 <div class="col-md-6" id="input-group-1">
                     <label asp-for="Form.FirstName" class="form-label">Firstname</label>
-                    <input asp-for="Form.FirstName" type="text" class="form-control" placeholder="Enter your first name" required>
+                    <input asp-for="Form.FirstName" type="text" class="form-control" required>
                     <span asp-validation-for="Form.FirstName"></span>
                 </div>
                 <div class="col-md-6" id="input-group-2">
                     <label asp-for="Form.LastName" class="form-label">Lastname</label>
-                    <input asp-for="Form.LastName" type="text" class="form-control" placeholder="Enter your last name" required>
+                    <input asp-for="Form.LastName" type="text" class="form-control" required>
                     <span asp-validation-for="Form.LastName"></span>
                 </div>
                 <div class="col-12">
                     <label asp-for="Form.EmailAddress" class="form-label">Email address</label>
-                    <input asp-for="Form.EmailAddress" type="email" class="form-control" placeholder="Enter your email address" required>
+                    <input asp-for="Form.EmailAddress" type="email" class="form-control" required>
                     <span asp-validation-for="Form.EmailAddress"></span>
                 </div>
                 <div class="col-12">
                     <label asp-for="Form.Password" class="form-label">Password</label>
-                    <input asp-for="Form.Password" type="password" class="form-control" placeholder="********" required>
+                    <input asp-for="Form.Password" type="password" class="form-control" required>
                     <span asp-validation-for="Form.Password"></span>
                 </div>
                 <div class="col-12">
                     <label asp-for="Form.ConfirmPassword" class="form-label">Confirm Password</label>
-                    <input asp-for="Form.ConfirmPassword" type="password" class="form-control" placeholder="********" required>
+                    <input asp-for="Form.ConfirmPassword" type="password" class="form-control" required>
                     <span asp-validation-for="Form.ConfirmPassword"></span>
                 </div>
                 <div class="col-12">
@@ -43,7 +43,7 @@
                         </label>
                     </div>
                     <div class="validation-msg">
-                        <span asp-validation-for="Form.ConfirmPassword"></span>
+                        <span asp-validation-for="Form.TermsAndConditions"></span>
                     </div>
                 </div>
                 <div class="col-12">
@@ -52,3 +52,5 @@
         </form>
     </div>
 </section>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

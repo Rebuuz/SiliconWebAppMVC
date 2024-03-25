@@ -1,20 +1,23 @@
-﻿///Validation forms
+﻿/////toggle menu
+//const toggleMenu = () => {
+//    document.GetElementById('menu').classList.toggle('hide');
+//    document.getElementById('account-btns').classList.toggle('hide');
+//}
 
-(() => {
-    'use strict'
+//const checkScreenSize = () => {
+//    if (window.innerWidth >= 1200) {
+//        document.getElementById('menu').classList.remove('hide');
+//        document.getElementById('account-btns').classList.remove('hide');
+//    } else {
+//        if (!document.getElementById('menu').classList.contains('hide')) {
+//            document.getElementById('menu').classList.contains('hide');
+//        }
+//        if (!document.getElementById('account-btns').classList.contains('hide')) {
+//            document.getElementById('account-btns').classList.contains('hide');
+//        }
+//    }
+//};
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+//window.addEventListener('resize', checkScreenSize);
+//checkScreenSize();
 
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
