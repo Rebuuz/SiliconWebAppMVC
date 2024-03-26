@@ -30,8 +30,8 @@ public class SignUpFormModel
     /// </summary>
     [Display(Name = "Email Address", Prompt = "Enter your email address", Order = 2)]
     [DataType(DataType.EmailAddress)]
-    [Required(ErrorMessage = "Email address is required")]
-    [RegularExpression("^[^@\\s]+@[^\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Your email address is invalid")]
+    [Required(ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]
+    [RegularExpression("^[^@\\s]+@[^\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]
     public string EmailAddress { get; set; } = null!;
 
     /// <summary>
@@ -39,8 +39,8 @@ public class SignUpFormModel
     /// </summary>
     [Display(Name = "Password", Prompt = "Enter your password", Order = 3)]
     [DataType(DataType.Password)]
-    [Required(ErrorMessage = "Password is required")]
-    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$", ErrorMessage = "Invalid password. Must contain 8 signs, one capitol letter, one small letter, a number and one special sign.")]
+    [Required(ErrorMessage = "Password is required. Must contain 8 signs, one capitol letter, one small letter, a number and one special sign.")]
+    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$", ErrorMessage = "Password is required. Must contain 8 signs, one capitol letter, one small letter, a number and one special sign.")]
     public string Password { get; set; } = null!;
 
     /// <summary>
@@ -49,7 +49,7 @@ public class SignUpFormModel
     [Display(Name = "Password", Prompt = "Confirm your password", Order = 4)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Must compare password.")]
-    [Compare(nameof(Password), ErrorMessage = "Password does not match.")]
+    [Compare(nameof(Password), ErrorMessage = "Must compare password.")]
     public string ConfirmPassword { get; set; } = null!;
 
     /// <summary>
