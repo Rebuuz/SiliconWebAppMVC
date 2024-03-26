@@ -1,6 +1,7 @@
 ﻿
 
 using Infrastructure.Context;
+using Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -17,13 +18,18 @@ public abstract class BaseRepo<TEntity>(DataContext context) where TEntity : cla
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public virtual async Task<TEntity> CreateOneAsync(TEntity entity)
+    public virtual async Task<ResponseResult> CreateOneAsync(TEntity entity)
     {
         try
         {
             _context.Set<TEntity>().Add(entity);
-            await _context.SaveChangesAsync();  
-            return entity;
+            await _context.SaveChangesAsync();
+            return new ResponseResult
+            {
+                ContentResult = entity,
+                Message = "Created successfully",
+                StatusCode = StatusCodes.OK,
+            };
         }
         catch (Exception ex) { Debug.WriteLine("Error :: " + ex.Message); }
         return null!;
