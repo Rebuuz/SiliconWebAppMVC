@@ -12,12 +12,12 @@
             <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
             <div class="col-12">
                 <label asp-for="Form.EmailAddress" class="form-label">Email</label>
-                <input asp-for="Form.EmailAddress" type="email" class="form-control" placeholder="Enter your email address" required>
+                <input asp-for="Form.EmailAddress" type="email" class="form-control" required>
                 <span asp-validation-for="Form.EmailAddress"></span>
             </div>
             <div class="col-12">
                 <label asp-for="Form.Password" class="form-label">Password</label>
-                <input asp-for="Form.Password" type="password" class="form-control" placeholder="********" required>
+                <input asp-for="Form.Password" type="password" class="form-control" required>
                 <span asp-validation-for="Form.Password"></span>
             </div>
             <div class="col-12">

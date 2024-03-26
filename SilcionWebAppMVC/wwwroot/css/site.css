@@ -1495,75 +1495,6 @@ img {
   padding-top: 1rem;
 }
 
-/*#signup {
-    height: 100%;
-
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-
-        @include lg {
-            width: 60%;
-        }
-
-        @include xl {
-            width: 40%;
-        }
-
-        form {
-            padding: 1rem;
-            padding-top: 5rem;
-
-            .content {
-                display: grid;
-                gap: 1rem 2rem;
-                grid-template-columns: 1fr;
-                grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
-
-                @include md {
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
-                }
-
-                #form-firstname {
-                    grid-area: firstname;
-                }
-
-                #form-lastname {
-                    grid-area: lastname;
-                }
-
-                #form-email {
-                    grid-area: email;
-                }
-
-                #form-password {
-                    grid-area: password;
-                }
-
-                #form-confirmPassword {
-                    grid-area: confirm;
-                }
-
-                #form-terms {
-                    grid-area: terms;
-                }
-
-                #form-button {
-                    grid-area: button;
-                    border: none;
-                }
-
-                .btn-theme-s {
-                    border: none !important;
-                }
-
-            }
-        }
-    }
-}*/
 #signup {
   margin-top: 6rem;
 }
@@ -1593,6 +1524,9 @@ img {
 #signup .container div label {
   font-weight: 700;
 }
+#signup .container div label.input-validation-error {
+  color: #EF4444;
+}
 #signup .container div input:focus {
   box-shadow: none;
   border: 1px solid #6366F1;
@@ -1600,8 +1534,21 @@ img {
 #signup .container div input::placeholder {
   opacity: 0.4;
 }
+#signup .container div input.input-validation-error {
+  border: 1px solid #EF4444;
+}
+#signup .container div input.input-validation-error::placeholder {
+  color: #EF4444;
+}
 #signup .container div span {
   padding: 0.5rem;
+}
+#signup .container div span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
   color: #EF4444;
 }
 #signup .container .form-check {
@@ -1621,6 +1568,10 @@ img {
     margin: 0;
     border-radius: 2px;
   }
+}
+#signup .container .form-check input[type=checkbox].input-validation-error {
+  border: solid 2px #EF4444;
+  color: #EF4444;
 }
 @media (min-width: 992px) {
   #signup .container .form-check input[type=checkbox]:checked {

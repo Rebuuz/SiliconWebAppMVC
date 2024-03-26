@@ -10,22 +10,26 @@ public class SignUpFormModel
     /// <summary>
     /// Firstname
     /// </summary>
+    [DataType(DataType.Text)]
     [Display(Name = "First Name", Prompt = "Enter your first name", Order = 0)]
     [Required(ErrorMessage = "First name is required")]
+    [MinLength(2, ErrorMessage = "Enter a first name")]
     public string FirstName { get; set; } = null!;
 
     /// <summary>
     /// Lastname
     /// </summary>
+    [DataType(DataType.Text)]
     [Display(Name = "Last Name", Prompt = "Enter your last name", Order = 1)]
     [Required(ErrorMessage = "Last name is required")]
+    [MinLength(2, ErrorMessage = "Enter a last name")]
     public string LastName { get; set; } = null!;
 
     /// <summary>
     /// Email address
     /// </summary>
     [Display(Name = "Email Address", Prompt = "Enter your email address", Order = 2)]
-    [EmailAddress]
+    [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email address is required")]
     [RegularExpression("^[^@\\s]+@[^\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Your email address is invalid")]
     public string EmailAddress { get; set; } = null!;
@@ -36,7 +40,7 @@ public class SignUpFormModel
     [Display(Name = "Password", Prompt = "Enter your password", Order = 3)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Password is required")]
-    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$", ErrorMessage = "Invalid password, must be strong password")]
+    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$", ErrorMessage = "Invalid password. Must contain 8 signs, one capitol letter, one small letter, a number and one special sign.")]
     public string Password { get; set; } = null!;
 
     /// <summary>
@@ -44,15 +48,14 @@ public class SignUpFormModel
     /// </summary>
     [Display(Name = "Password", Prompt = "Confirm your password", Order = 4)]
     [DataType(DataType.Password)]
-    [Required(ErrorMessage = "Password does not match")]
-    [Compare(nameof(Password), ErrorMessage = "Your passwords does not match")]
+    [Required(ErrorMessage = "Must compare password.")]
+    [Compare(nameof(Password), ErrorMessage = "Password does not match.")]
     public string ConfirmPassword { get; set; } = null!;
 
     /// <summary>
     /// Checkbox 
     /// </summary>
     [Display(Name = "I agree to the Terms & Conditions", Order = 5)]
-    //[Required(ErrorMessage = "You must agree to the Terms & Conditions")]
     [CheckboxRequired(ErrorMessage = "You must accept the terms and conditions to proceed.")]
     public bool TermsAndConditions { get; set; } = false;
 
