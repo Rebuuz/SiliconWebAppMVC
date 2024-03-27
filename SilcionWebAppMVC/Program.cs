@@ -1,4 +1,6 @@
 using Infrastructure.Context;
+using Infrastructure.Repositiories;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,12 @@ builder.Services.AddControllersWithViews();
 
 //database service
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+
+//other services
+builder.Services.AddScoped<AddressRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 

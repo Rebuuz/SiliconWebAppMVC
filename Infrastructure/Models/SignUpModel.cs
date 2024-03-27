@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.ComponentModel;
+﻿using Infrastructure.Helpers;
 using System.ComponentModel.DataAnnotations;
-using SiliconMVC.Helpers;
 
-namespace SiliconMVC.Models;
+namespace Infrastructure.Models;
 
-public class SignUpFormModel
+public class SignUpModel
 {
     /// <summary>
     /// Firstname
@@ -58,7 +56,4 @@ public class SignUpFormModel
     [Display(Name = "I agree to the Terms & Conditions", Order = 5)]
     [CheckboxRequired(ErrorMessage = "You must accept the terms and conditions to proceed.")]
     public bool TermsAndConditions { get; set; } = false;
-
 }
-
-

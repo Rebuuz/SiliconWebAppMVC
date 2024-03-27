@@ -1,6 +1,7 @@
 ﻿
 
 using Infrastructure.Context;
+using Infrastructure.Factories;
 using Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -24,29 +25,31 @@ public abstract class BaseRepo<TEntity>(DataContext context) where TEntity : cla
         {
             _context.Set<TEntity>().Add(entity);
             await _context.SaveChangesAsync();
-            return new ResponseResult
-            {
-                ContentResult = entity,
-                Message = "Created successfully",
-                StatusCode = StatusCodes.OK,
-            };
+            return ResponseFactory.Ok(entity);
+            
         }
-        catch (Exception ex) { Debug.WriteLine("Error :: " + ex.Message); }
-        return null!;
+        catch (Exception ex) 
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        }
+        
     }
 
     /// <summary>
     /// Get all from the list
     /// </summary>
     /// <returns></returns>
-    public virtual IEnumerable<TEntity> GetAll()
+    public virtual async Task<ResponseResult> GetAllAsync()
     {
         try
         {
-            return _context.Set<TEntity>().ToList();
+            IEnumerable<TEntity> result = await _context.Set<TEntity>().ToListAsync();
+            return ResponseFactory.Ok(result);
         }
-        catch (Exception ex) { Debug.WriteLine("Error :: " + ex.Message); }
-        return null!;
+        catch (Exception ex) 
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        } 
     }
 
     /// <summary>
@@ -54,15 +57,24 @@ public abstract class BaseRepo<TEntity>(DataContext context) where TEntity : cla
     /// </summary>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public virtual async Task<TEntity> GetOneAsync(Expression<Func<TEntity, bool>> predicate)
+    public virtual async Task<ResponseResult> GetOneAsync(Expression<Func<TEntity, bool>> predicate)
     {
         try
         {
             var result = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
-            return result!;
+            if (result == null) 
+            {
+                return ResponseFactory.NotFound();
+            }
+            else
+            {
+                return ResponseFactory.Ok(result);
+            }
         }
-        catch (Exception ex) { Debug.WriteLine("Error :: " + ex.Message); }
-        return null!;
+        catch (Exception ex)
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        }
     }
 
     /// <summary>
@@ -71,21 +83,79 @@ public abstract class BaseRepo<TEntity>(DataContext context) where TEntity : cla
     /// <param name="expression"></param>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public virtual async Task<TEntity> UpdateAsync(Expression<Func<TEntity, bool>> expression, TEntity entity)
+
+    public virtual async Task<ResponseResult> UpdateOneAsync(Expression<Func<TEntity, bool>> predicate, TEntity updatedEntity)
     {
         try
         {
-            var entityToUpdate = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
-            if (entityToUpdate != null)
+            var result = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+            if (result != null)
             {
-                _context.Entry(entityToUpdate).CurrentValues.SetValues(entity);
-                await context.SaveChangesAsync();
-
-                return entityToUpdate;
+                _context.Entry(result).CurrentValues.SetValues(updatedEntity);
+                await _context.SaveChangesAsync();
+                return ResponseFactory.Ok(result);
+            }
+            else
+            {
+                return ResponseFactory.NotFound();
             }
         }
-        catch (Exception ex) { Debug.WriteLine("Error :: " + ex.Message); }
-        return null!;
+        catch (Exception ex)
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// to delete one 
+    /// </summary>
+    /// <param name="predicate"></param>
+    /// <returns></returns>
+    public virtual async Task<ResponseResult> DeleteOneAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        try
+        {
+            var result = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+            if (result != null)
+            {
+                _context.Set<TEntity>().Remove(result);
+                await _context.SaveChangesAsync();
+                return ResponseFactory.Ok("Successfully removed");
+            }
+            else
+            {
+                return ResponseFactory.NotFound();
+            }
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        }
+    }
+
+     /// <summary>
+     /// if one exists 
+     /// </summary>
+     /// <param name="predicate"></param>
+     /// <returns></returns>
+    public virtual async Task<ResponseResult> OneExistsAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        try
+        {
+            var result = await _context.Set<TEntity>().AnyAsync(predicate);
+            if (result)
+            {
+                return ResponseFactory.Exists();
+            }
+            else
+            {
+                return ResponseFactory.NotFound();
+            }
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.ERROR(ex.Message);
+        }
     }
 
 }

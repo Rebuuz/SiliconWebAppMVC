@@ -1,11 +1,11 @@
-﻿using SiliconMVC.Models;
+﻿using Infrastructure.Models;
 
 namespace SiliconMVC.ViewModels;
 
 public class SignUpViewModel
 {
     public string Title { get; set; } = "Sign Up";
-    public SignUpFormModel Form { get; set; } = new SignUpFormModel();
+    public SignUpModel Form { get; set; } = new SignUpModel();
 
     
 }

@@ -1,24 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastructure.Services;
+using Microsoft.AspNetCore.Mvc;
 using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
 
-public class AuthController : Controller
+public class AuthController(UserService userService) : Controller
 {
+    /// <summary>
+    /// to access userservice
+    /// </summary>
+    private readonly UserService _userService = userService;
 
     /// <summary>
-    /// For my view 
+    /// For my signup view
     /// </summary>
     /// <returns></returns>
     [Route("/signup")]
     [HttpGet]
-    public IActionResult SignUp()
-    {
-        var viewModel = new SignUpViewModel();
+    public IActionResult SignUp() => View(new SignUpViewModel());
 
-
-        return View(viewModel);
-    }
 
     /// <summary>
     /// Routing for my form posts ... 
@@ -28,14 +28,18 @@ public class AuthController : Controller
 
     [Route("/signup")]
     [HttpPost]
-    public IActionResult SignUp(SignUpViewModel viewModel)
+    public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
         ///If working, go to sign in 
         
-        if (!ModelState.IsValid)
-            return View(viewModel);
-
-        return RedirectToAction("SignIn", "Auth");
+        if (ModelState.IsValid) 
+        {
+            var result = await _userService.CreateUserAsync(viewModel.Form);
+            if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
+                return RedirectToAction("SignIn", "Auth");
+        }
+        
+        return View(viewModel);
     }
 
     /// <summary>
@@ -44,29 +48,20 @@ public class AuthController : Controller
     /// <returns></returns>
     [Route("/signin")]
     [HttpGet]
-    public IActionResult SignIn()
-    {
-        var viewModel = new SignInViewModel();
-
-
-        return View(viewModel);
-    }
+    public IActionResult SignIn() => View(new SignInViewModel());
 
     [Route("/signin")]
     [HttpPost]
-    public IActionResult SignIn(SignInViewModel viewModel)
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
-        ///If working, redirect to account page. If email or password is incorrect, show the message
+        ///If working, redirect to home page 
 
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return View(viewModel);
+            var result = await _userService.SignInUserAsync(viewModel.Form);
+            if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
+                return RedirectToAction("Details", "Account");
         }
-
-        ///Add this later - check if sign in information is correct and then move to correct website. 
-        //var success = _authService.SignIn(viewModel.Form);
-        //if(result)
-        //return RedirectToAction("Account", "Index");
 
         viewModel.ErrorMsg = "Incorrect email or password.";
         return View(viewModel);

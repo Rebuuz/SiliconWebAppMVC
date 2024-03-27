@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SiliconMVC.Models;
+namespace Infrastructure.Models;
 
-public class SignInFormModel
+public class SignInModel
 {
     /// <summary>
     /// Email address
@@ -24,5 +24,5 @@ public class SignInFormModel
     /// bool remember me
     /// </summary>
     [Display(Name = "Remember me", Order = 2)]
-    public bool RememberMe { get; set; } 
+    public bool RememberMe { get; set; }
 }
