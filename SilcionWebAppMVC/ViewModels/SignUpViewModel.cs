@@ -8,7 +8,7 @@ public class SignUpViewModel
 {
     //[Required]
     public string Title { get; set; } = "Sign Up";
-    public SignUpModel Form { get; set; } = new SignUpModel();
+    //public SignUpModel Form { get; set; } = new SignUpModel();
 
 
     /// <summary>
@@ -36,7 +36,7 @@ public class SignUpViewModel
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]
     [RegularExpression("^[^@\\s]+@[^\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]
-    public string EmailAddress { get; set; } = null!;
+    public string Email { get; set; } = null!;
 
     /// <summary>
     /// Password

@@ -1,35 +1,35 @@
 ﻿@model SignInViewModel
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "Sign in";
 }
 
 <section id="signin">
     <div class="container">
+        
+        <div class="alert">@ViewData["ErrorMessage"]</div>
         <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate class="row g-3 needs-validation">
-            <div id="error-msg">@Model.ErrorMsg</div>
-
             <h1>Welcome Back</h1>
             <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
             <div class="col-12">
-                <label asp-for="Form.EmailAddress" class="form-label">Email</label>
-                <input asp-for="Form.EmailAddress" type="email" class="form-control" required>
-                <span asp-validation-for="Form.EmailAddress"></span>
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" required>
+                <span asp-validation-for="Email"></span>
             </div>
             <div class="col-12">
-                <label asp-for="Form.Password" class="form-label">Password</label>
-                <input asp-for="Form.Password" type="password" class="form-control" required>
-                <span asp-validation-for="Form.Password"></span>
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" required>
+                <span asp-validation-for="Password"></span>
             </div>
             <div class="col-12">
                 <div class="form-remember">
-                    <input asp-for="Form.RememberMe" class="form-check-input" type="checkbox" id="gridCheck">
-                    <label asp-for="Form.RememberMe" class="form-check-label" for="gridCheck">
+                    <input asp-for="RememberMe" class="form-check-input" type="checkbox" id="gridCheck">
+                    <label asp-for="RememberMe" class="form-check-label" for="gridCheck">
                         Remember me 
                     </label>
                 </div>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn-theme-s">@Model.Title</button>
+                <button type="submit" class="btn-theme-s">Sign in</button>
                 <a id="form-forgot-password">Forgot your password?</a>
             </div>
         </form>

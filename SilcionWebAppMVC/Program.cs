@@ -1,4 +1,5 @@
 using Infrastructure.Context;
+using Infrastructure.Entities;
 using Infrastructure.Repositiories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,14 @@ builder.Services.AddControllersWithViews();
 
 //database service
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+
+//identity
+builder.Services.AddDefaultIdentity<UserEntity>(x =>
+{
+    x.User.RequireUniqueEmail = true;
+    x.SignIn.RequireConfirmedAccount = false;
+    x.Password.RequiredLength = 8;
+}).AddEntityFrameworkStores<DataContext>();
 
 //other services
 builder.Services.AddScoped<AddressRepository>();

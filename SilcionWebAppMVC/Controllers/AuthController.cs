@@ -15,10 +15,12 @@ public class AuthController : Controller
     /// </summary>
 
     private readonly UserManager<UserEntity> _userManager;
+    private readonly SignInManager<UserEntity> _signInManager;
 
-    public AuthController(UserManager<UserEntity> userManager)
+    public AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager)
     {
         _userManager = userManager;
+        _signInManager = signInManager;
     }
 
     /// <summary>
@@ -34,14 +36,35 @@ public class AuthController : Controller
 
     [HttpPost]
     [Route("/signup")]
-    public async Task<IActionResult> SignUp(SignUpModel viewModel)
+    public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
-        ///if working, go to sign in when created a user successfully, make into an async
+        ///if working, go to sign in when created a user successfully
         if (ModelState.IsValid)
         {
-            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.EmailAddress);
+            ///check if user already exists by email
+            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Email);
+            if (exists)
+            {
+                ModelState.AddModelError("AlreadyExistrs", "User with the same email address already exists.");
+                ViewData["ErrorMessage"] = "User with the same email address already exists.";
+                return View(viewModel);
+            }
 
-            _userManager.CreateAsync(UserEntity, viewModel.Password);
+            ///create user (eventuellt flytta till userfactory
+            var userEntity = new UserEntity
+            {
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
+                Email = viewModel.Email,
+                UserName = viewModel.Email
+            };
+
+            ///register user
+            var result = await _userManager.CreateAsync(userEntity, viewModel.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("SignIn", "Auth");
+            }
         }
         return View(viewModel);
     }
@@ -57,9 +80,10 @@ public class AuthController : Controller
         return View();
     }
 
+
     [HttpPost]
     [Route("/signin")]
-    public IActionResult SignIn(SignInViewModel viewModel) 
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel) 
     {
         ViewData["Title"] = "Sign In";
         
@@ -67,8 +91,16 @@ public class AuthController : Controller
         ///
         if (ModelState.IsValid)
         {
-
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Details", "Account");
+            }
         }
+
+        ModelState.AddModelError("IncorrectValues", "Email or password is not correct.");
+        ViewData["ErrorMessage"] = "Incorrect email or password.";
+
         return View(viewModel);
     }
 
