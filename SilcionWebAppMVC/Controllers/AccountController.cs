@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
@@ -12,6 +13,8 @@ public class AccountController : Controller
     //{
     //    _accountService = accountService;
     //}
+
+    [Authorize]
 
     [Route("/account")]
     public IActionResult Details()

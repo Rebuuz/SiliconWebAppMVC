@@ -19,27 +19,27 @@ public class UserService(UserRepository userRepository, AddressService addressSe
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
-    public async Task<ResponseResult> CreateUserAsync(SignUpModel model)
-    {
-        try
-        {
-            var exists = await _userRepository.OneExistsAsync(x => x.Email == model.EmailAddress);
-            if (exists.StatusCode == StatusCodes.EXISTS)
-                return exists;
+    //public async Task<ResponseResult> CreateUserAsync(SignUpModel model)
+    //{
+    //    //try
+    //    //{
+    //    //    var exists = await _userRepository.OneExistsAsync(x => x.Email == model.EmailAddress);
+    //    //    if (exists.StatusCode == StatusCodes.EXISTS)
+    //    //        return exists;
 
-                var result = await _userRepository.CreateOneAsync(UserFactory.Create(model));
+    //    //        var result = await _userRepository.CreateOneAsync(UserFactory.Create(model));
 
-            if (result.StatusCode != StatusCodes.OK)
-                return result;
+    //    //    if (result.StatusCode != StatusCodes.OK)
+    //    //        return result;
 
-                return ResponseFactory.Ok("User created successfully");
+    //    //        return ResponseFactory.Ok("User created successfully");
             
-        }
-        catch (Exception ex)
-        {
-            return ResponseFactory.ERROR(ex.Message);
-        }
-    }
+    //    //}
+    //    //catch (Exception ex)
+    //    //{
+    //    //    return ResponseFactory.ERROR(ex.Message);
+    //    //}
+    //}
 
     public async Task<ResponseResult> SignInUserAsync(SignInModel model)
     {
@@ -52,7 +52,7 @@ public class UserService(UserRepository userRepository, AddressService addressSe
                 ///convert object to user entity
                 var userEntity = (UserEntity)result.ContentResult;
 
-                if (PasswordHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
+                //if (PasswordHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
                     return ResponseFactory.Ok();
 
 

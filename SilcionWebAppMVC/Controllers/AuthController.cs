@@ -1,71 +1,76 @@
-﻿using Infrastructure.Services;
+﻿using Infrastructure.Entities;
+using Infrastructure.Models;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
 
-public class AuthController(UserService userService) : Controller
+public class AuthController : Controller
 {
     /// <summary>
-    /// to access userservice
+    /// to access user
     /// </summary>
-    private readonly UserService _userService = userService;
 
-    /// <summary>
-    /// For my signup view
-    /// </summary>
-    /// <returns></returns>
-    [Route("/signup")]
-    [HttpGet]
-    public IActionResult SignUp() => View(new SignUpViewModel());
+    private readonly UserManager<UserEntity> _userManager;
 
-
-    /// <summary>
-    /// Routing for my form posts ... 
-    /// </summary>
-    /// <param name="model"></param>
-    /// <returns></returns>
-
-    [Route("/signup")]
-    [HttpPost]
-    public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
+    public AuthController(UserManager<UserEntity> userManager)
     {
-        ///If working, go to sign in 
-        
-        if (ModelState.IsValid) 
-        {
-            var result = await _userService.CreateUserAsync(viewModel.Form);
-            if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
-                return RedirectToAction("SignIn", "Auth");
-        }
-        
-        return View(viewModel);
+        _userManager = userManager;
     }
 
     /// <summary>
-    /// For my Sign in view 
+    /// Signup view
     /// </summary>
     /// <returns></returns>
-    [Route("/signin")]
     [HttpGet]
-    public IActionResult SignIn() => View(new SignInViewModel());
-
-    [Route("/signin")]
-    [HttpPost]
-    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
+    [Route("/signup")]
+    public IActionResult SignUp()
     {
-        ///If working, redirect to home page 
+        return View();
+    }
 
+    [HttpPost]
+    [Route("/signup")]
+    public async Task<IActionResult> SignUp(SignUpModel viewModel)
+    {
+        ///if working, go to sign in when created a user successfully, make into an async
         if (ModelState.IsValid)
         {
-            var result = await _userService.SignInUserAsync(viewModel.Form);
-            if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
-                return RedirectToAction("Details", "Account");
+            var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.EmailAddress);
+
+            _userManager.CreateAsync(UserEntity, viewModel.Password);
         }
-
-        viewModel.ErrorMsg = "Incorrect email or password.";
         return View(viewModel);
-
-        
     }
+
+    /// <summary>
+    /// sign in view
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("/signin")]
+    public IActionResult SignIn()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [Route("/signin")]
+    public IActionResult SignIn(SignInViewModel viewModel) 
+    {
+        ViewData["Title"] = "Sign In";
+        
+        ///If working, redirect to user home page after signing in
+        ///
+        if (ModelState.IsValid)
+        {
+
+        }
+        return View(viewModel);
+    }
+
+   
 }

@@ -17,6 +17,13 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<UserService>();
 
+//cookie
+//builder.Services.AddAuthentication("AuthCookie").AddCookie("AuthCookie", x =>
+//{
+//    x.LoginPath = "/auth/signin";
+//    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+//});
+
 var app = builder.Build();
 
 app.UseExceptionHandler("/Home/Error");
@@ -25,6 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+///who  ? 
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

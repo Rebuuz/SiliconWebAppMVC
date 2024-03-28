@@ -7,12 +7,27 @@ public class PasswordHasher
 {
     public static (string, string) GenerateSecurePassword(string password)
     {
-        using var hmac = new HMACSHA512();
-        //unlock password
-        var securityKey = hmac.Key;
-        var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+        try
+        {
+            using var hmac = new HMACSHA512();
+            var securityKey = Convert.ToBase64String(hmac.Key);
+            var hash = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(password)));
+
+            return (securityKey, hash); 
+        }
+        catch
+        {
+
+        }
+        return (null!, null!);
+
+        //using var hmac = new HMACSHA512();
+        ////unlock password
+        //var securityKey = hmac.Key;
+        //var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
         
-        return (Convert.ToBase64String(securityKey), Convert.ToBase64String(hash));
+        //return (Convert.ToBase64String(securityKey), Convert.ToBase64String(hash));
     }
 
     ///validate secure password
@@ -27,12 +42,12 @@ public class PasswordHasher
         var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
 
         ///check if password and confirm password is identical
-        for(var i = 0; i < hash.Length; i++)
+        for (var i = 0; i < hash.Length; i++)
         {
-            if (hash[i] != confirmPassword[i]) 
+            if (hash[i] != confirmPassword[i])
                 return false;
         }
-        
+
         return true;
     }
 }

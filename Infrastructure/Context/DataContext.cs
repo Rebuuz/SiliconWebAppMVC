@@ -1,10 +1,13 @@
-﻿using Infrastructure.Entities;
+﻿
+using Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context;
 
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<UserEntity>(options)
 {
-    public DbSet<AddressEntity> Address { get; set; }
-    public DbSet<UserEntity> Users { get; set; }
+    ///registrating entities. User already added
+    ///
+    public DbSet<AddressEntity> Addresses { get; set; }
 }

@@ -1,21 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace Infrastructure.Entities;
 
-public class AddressEntity
+public class AddressEntity 
 {
-    ///for adding address information
-    /// <summary>
-    /// </summary>
-    /// 
-    [Key]
     public int Id { get; set; }
-    public string StreetName { get; set; } = null!;
-    public string PostalCode { get; set; } = null!;
-    public string City { get; set; } = null!;
-    /// <summary>
-    /// connection to userentity (many users on one adress)
-    /// </summary>
-    public ICollection<UserEntity> Users { get; set; } = [];
+    public string? AddressOne { get; set; }
+    public string? AddressTwo { get; set; }
+    public string? PostalCode { get; set; }
+    public string? City { get; set; }
 
+    public ICollection<UserEntity> User { get; set; } = [];
 }
