@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SiliconMVC.Models;
+namespace SiliconMVC.ViewModels;
 
 public class AccountDetailsAddressInfoModel
 {
@@ -12,7 +12,7 @@ public class AccountDetailsAddressInfoModel
     public string? AddressLine_1 { get; set; }
 
     [Display(Name = "Address line 2", Prompt = "Enter your second address line", Order = 1)]
-    public string? AddressLine_2 { get; set; } 
+    public string? AddressLine_2 { get; set; }
 
     [Display(Name = "Postal code", Prompt = "Enter your postal code", Order = 3)]
     [DataType(DataType.PostalCode)]

@@ -1,30 +1,43 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
 
-public class AccountController : Controller
+public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
 {
-    ///Use later
-    //private readonly AccountService _accountService;
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
 
-    //public AccountController(AccountService accountService)
-    //{
-    //    _accountService = accountService;
-    //}
 
-    [Authorize]
+    //[Authorize] ?? 
 
-    [Route("/account")]
-    public IActionResult Details()
+    [HttpGet]
+    [Route("/account/details")]
+    public async Task<IActionResult> Details()
     {
-        var viewModel = new AccountDetailsViewModel();
-        //to save to database later
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        //viewModel.AddressInfo = _accountService.AddressInfo();
+        if (!_signInManager.IsSignedIn(User))
+            return RedirectToAction("SignIn", "Auth");
+
+
+        var userEntity = await _userManager.GetUserAsync(User);
+
+        var viewModel = new AccountDetailsViewModel()
+        {
+            User = userEntity!
+        };
 
         return View(viewModel);
+               
+
+        //var viewModel = new AccountDetailsViewModel();
+        ////to save to database later
+        ////viewModel.BasicInfo = _accountService.GetBasicInfo();
+        ////viewModel.AddressInfo = _accountService.AddressInfo();
+
+        //return View(viewModel);
     }
 
     //when clicking Save changes on basic info in account details

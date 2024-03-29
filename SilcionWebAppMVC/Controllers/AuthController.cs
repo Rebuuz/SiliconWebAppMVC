@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,10 @@ public class AuthController : Controller
     [Route("/signup")]
     public IActionResult SignUp()
     {
+
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Details", "Account");
+
         return View();
     }
 
@@ -75,9 +80,19 @@ public class AuthController : Controller
     /// <returns></returns>
     [HttpGet]
     [Route("/signin")]
-    public IActionResult SignIn()
+    public IActionResult SignIn(string returnUrl)
     {
+        ///If signed in, access details page
+        ///
+
+        if (_signInManager.IsSignedIn(User))
+            return RedirectToAction("Details", "Account");
+
+        
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
+
         return View();
+
     }
 
 
@@ -104,5 +119,19 @@ public class AuthController : Controller
         return View(viewModel);
     }
 
-   
+    [HttpGet]
+    [Route("/signout")]
+    public new async Task<IActionResult> SignOut()
+    {
+        ///sign out
+        ///
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+
+        //await HttpContext.SignOutAsync();
+        //return RedirectToAction("Index", "Home");
+
+    }
+
+
 }
