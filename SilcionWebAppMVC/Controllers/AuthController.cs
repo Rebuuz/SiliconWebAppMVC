@@ -98,7 +98,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [Route("/signin")]
-    public async Task<IActionResult> SignIn(SignInViewModel viewModel) 
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl) 
     {
         ViewData["Title"] = "Sign In";
         
@@ -109,6 +109,9 @@ public class AuthController : Controller
             var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
             if (result.Succeeded)
             {
+                if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                   return Redirect(returnUrl);
+                    
                 return RedirectToAction("Details", "Account");
             }
         }

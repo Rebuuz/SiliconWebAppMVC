@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 
 namespace SiliconMVC.ViewModels;
 
@@ -9,13 +10,12 @@ public class AccountDetailsBasicInfoModel
     /// Firstname, lastname and email is required.
     /// </summary>
 
-    ///Profile Image
-    [DataType(DataType.ImageUrl)]
-    public string? ProfileImage { get; set; }
+    public string UserId { get; set; } = null!;
 
     /// Firstname
     [Display(Name = "First Name", Prompt = "Enter your first name", Order = 0)]
     [Required(ErrorMessage = "First name is required")]
+    [DataType(DataType.Text)]
     public string FirstName { get; set; } = null!;
 
     /// <summary>
@@ -23,6 +23,7 @@ public class AccountDetailsBasicInfoModel
     /// </summary>
     [Display(Name = "Last Name", Prompt = "Enter your last name", Order = 1)]
     [Required(ErrorMessage = "Last name is required")]
+    [DataType(DataType.Text)]
     public string LastName { get; set; } = null!;
 
     /// <summary>

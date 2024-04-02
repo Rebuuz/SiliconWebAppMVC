@@ -75,7 +75,7 @@
                 }
             }
 
-            button {
+            a {
                 text-align: left;
                 margin-bottom: 2rem;
                 width: 100%;
@@ -124,10 +124,20 @@
                 margin-top: 1.5rem;
             }
 
+            .error {
+                padding: .5rem;
+                color: $danger;
+            }
+
             .bottom-form {
                 border-top: 1px $gray-300 solid;
                 padding-top: 2rem;
                 padding-bottom: 4rem;
+
+                .error {
+                    padding: .5rem;
+                    color: $danger;
+                }
             }
         }
     }

@@ -1671,7 +1671,7 @@ img {
 #account-details .container .content-left .account-info p {
   color: #565973;
 }
-#account-details .container .content-left button {
+#account-details .container .content-left a {
   text-align: left;
   margin-bottom: 2rem;
   width: 100%;
@@ -1706,8 +1706,16 @@ img {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+#account-details .container .content-right .error {
+  padding: 0.5rem;
+  color: #EF4444;
+}
 #account-details .container .content-right .bottom-form {
   border-top: 1px #E2E5F1 solid;
   padding-top: 2rem;
   padding-bottom: 4rem;
+}
+#account-details .container .content-right .bottom-form .error {
+  padding: 0.5rem;
+  color: #EF4444;
 }

@@ -15,8 +15,8 @@ public class AccountService
         _userManager = userManager;
     }
 
-    public async Task<bool> UpdateUserAsync(UserEntity user)
-    {
-        _dbContext.Users.Add(user);
-    }
+    //public async Task<bool> UpdateUserAsync(UserEntity user)
+    //{
+    //    _dbContext.Users.Add(user);
+    //}
 }
