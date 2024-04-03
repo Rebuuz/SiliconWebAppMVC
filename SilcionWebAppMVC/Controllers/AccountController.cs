@@ -62,51 +62,34 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
             }
         }
 
-
         if (viewModel.AddressInfo != null)
         {
             if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
             {
+                
+
+                var adressId = await _addressManager.GetOrCreateAddressAsync(viewModel.AddressInfo.AddressLine_1, viewModel.AddressInfo.AddressLine_2, viewModel.AddressInfo.PostalCode, viewModel.AddressInfo.City);
+                if (adressId < 0)
+                {
+                    //
+                    
+                   
+                }
+
+
                 var user = await _userManager.GetUserAsync(User);
+
                 if (user != null)
                 {
+                    user.AddressId = adressId;
+                    var result = await _userManager.UpdateAsync(user);
 
-                    if (user.Address != null)
+                    if (result.Succeeded)
                     {
-                        var address = await _addressManager.GetAddressAsync(user.Address!.Id);
-                        if (address != null)
-                        {
-                            address.AddressOne = viewModel.AddressInfo.AddressLine_1;
-                            address.AddressTwo = viewModel.AddressInfo.AddressLine_2;
-                            address.PostalCode = viewModel.AddressInfo.PostalCode;
-                            address.City = viewModel.AddressInfo.City;
-
-                            var result = await _addressManager.UpdateAddressAsync(address);
-                            if (!result)
-                            {
-                                ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
-                                ViewData["ErrorMessage"] = "Something went wrong, unable to save the data!";
-                            }
-                        }
-                        else
-                        {
-                            address = new AddressEntity
-                            {
-                                AddressOne = viewModel.AddressInfo.AddressLine_1,
-                                AddressTwo = viewModel.AddressInfo.AddressLine_2,
-                                PostalCode = viewModel.AddressInfo.PostalCode,
-                                City = viewModel.AddressInfo.City,
-                            };
-
-                            var result = await _addressManager.CreateAddressAsync(address);
-                            if (!result)
-                            {
-                                ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
-                                ViewData["ErrorMessage"] = "Something went wrong, unable to save the data!";
-                            }
-                        }
+                        //meddelande
                     }
                 }
+
             }
         }
 
@@ -184,9 +167,9 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     {
 
         var user = await _userManager.GetUserAsync(User);
-        if (user != null && user.Address != null)
+        if (user != null)
         {
-            var address = await _addressManager.GetAddressAsync(user.Address.Id);
+            var address = await _addressManager.GetAddressAsync((int)user.AddressId);
             if (address != null)
             {
                 return new AccountDetailsAddressInfoModel

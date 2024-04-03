@@ -17,10 +17,56 @@ public class AddressManager(DataContext context)
 
     public async Task<bool> CreateAddressAsync(AddressEntity entity)
     {
-        _context.Addresses.Add(entity);
-        await _context.SaveChangesAsync();
-        return true;
+        try
+        {
+            _context.Addresses.Add(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception)
+        {
+
+            return false;
+        }
     }
+
+
+    public async Task<int> GetOrCreateAddressAsync(string addressline1, string? addressline2, string postalcode, string city)
+    {
+        try
+        {
+            var existingAddress = await _context.Addresses.FirstOrDefaultAsync(x => x.AddressOne == addressline1 &&  x.AddressTwo == addressline2 && x.PostalCode == postalcode && x.City == city);
+            if (existingAddress != null)
+            {
+                return existingAddress.Id;
+            }
+            else
+            {
+                var entity = new AddressEntity
+                {
+                    AddressOne = addressline1,
+                    AddressTwo = addressline2,
+                    PostalCode = postalcode,
+                    City = city
+
+                };
+                var newAddress = _context.Addresses.Add(entity);
+                await _context.SaveChangesAsync();
+                return entity.Id;
+
+
+            }
+
+        }
+        catch (Exception)
+        {
+
+            return 0;
+        }
+    }
+
+
+
 
     public async Task<bool> UpdateAddressAsync(AddressEntity entity)
     {
