@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,11 @@ namespace SiliconMVC.Controllers;
 
 // protects the account page if not signed in. 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
-    private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    //private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly AddressManager _addressManager = addressManager;
 
     [HttpGet]
     [Route("/account/details")]
@@ -60,6 +62,7 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
             }
         }
 
+
         if (viewModel.AddressInfo != null)
         {
             if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
@@ -67,17 +70,41 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
                 {
-                    user.FirstName = viewModel.BasicInfo.FirstName;
-                    user.LastName = viewModel.BasicInfo.LastName;
-                    user.Email = viewModel.BasicInfo.EmailAddress;
-                    user.PhoneNumber = viewModel.BasicInfo.Phone;
-                    user.Bio = viewModel.BasicInfo.Bio;
 
-                    var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
+                    if (user.Address != null)
                     {
-                        ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
-                        ViewData["ErrorMessage"] = "Something went wrong, unable to save the data!";
+                        var address = await _addressManager.GetAddressAsync(user.Address!.Id);
+                        if (address != null)
+                        {
+                            address.AddressOne = viewModel.AddressInfo.AddressLine_1;
+                            address.AddressTwo = viewModel.AddressInfo.AddressLine_2;
+                            address.PostalCode = viewModel.AddressInfo.PostalCode;
+                            address.City = viewModel.AddressInfo.City;
+
+                            var result = await _addressManager.UpdateAddressAsync(address);
+                            if (!result)
+                            {
+                                ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
+                                ViewData["ErrorMessage"] = "Something went wrong, unable to save the data!";
+                            }
+                        }
+                        else
+                        {
+                            address = new AddressEntity
+                            {
+                                AddressOne = viewModel.AddressInfo.AddressLine_1,
+                                AddressTwo = viewModel.AddressInfo.AddressLine_2,
+                                PostalCode = viewModel.AddressInfo.PostalCode,
+                                City = viewModel.AddressInfo.City,
+                            };
+
+                            var result = await _addressManager.CreateAddressAsync(address);
+                            if (!result)
+                            {
+                                ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
+                                ViewData["ErrorMessage"] = "Something went wrong, unable to save the data!";
+                            }
+                        }
                     }
                 }
             }
@@ -156,10 +183,41 @@ public class AccountController(UserManager<UserEntity> userManager, SignInManage
     private async Task<AccountDetailsAddressInfoModel> PopulateAddressInfoAsync()
     {
 
-        //var user = await _userManager.GetUserAsync(User);
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null && user.Address != null)
+        {
+            var address = await _addressManager.GetAddressAsync(user.Address.Id);
+            if (address != null)
+            {
+                return new AccountDetailsAddressInfoModel
+                {
+                    AddressLine_1 = address.AddressOne,
+                    AddressLine_2 = address.AddressTwo,
+                    PostalCode = address.PostalCode,
+                    City = address.City
+                };
+            }
+        }
 
+        // Om användaren inte har en adress eller om det inte går att hitta adressinformationen, returnera en tom modell.
         return new AccountDetailsAddressInfoModel();
-        
+
+        //    var user = await _userManager.GetUserAsync(User);
+        //    if (user != null)
+        //    {
+        //        var address = await _addressManager.GetAddressAsync(user.Address!.Id);
+        //        return new AccountDetailsAddressInfoModel
+        //        {
+        //            AddressLine_1 = address.AddressOne,
+        //            AddressLine_2 = address.AddressTwo,
+        //            PostalCode = address.PostalCode,
+        //            City = address.City,
+        //        };
+        //    }
+
+        //    return new AccountDetailsAddressInfoModel();
+
+        //}
 
     }
 

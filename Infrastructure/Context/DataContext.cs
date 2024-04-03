@@ -10,4 +10,15 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     ///registrating entities. User already added
     ///
     public DbSet<AddressEntity> Addresses { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<UserEntity>()
+            .HasOne(u => u.Address)
+            .WithMany(a => a.User)
+            .HasForeignKey(u => u.AddressId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
 }
