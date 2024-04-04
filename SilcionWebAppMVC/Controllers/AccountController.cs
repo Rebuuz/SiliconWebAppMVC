@@ -69,12 +69,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                 
 
                 var adressId = await _addressManager.GetOrCreateAddressAsync(viewModel.AddressInfo.AddressLine_1, viewModel.AddressInfo.AddressLine_2, viewModel.AddressInfo.PostalCode, viewModel.AddressInfo.City);
-                if (adressId < 0)
-                {
-                    //
-                    
-                   
-                }
+                
+                //if (adressId > 0)
+                //{
+                //    ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
+                //    ViewData["ErrorMessage"] = "Address created successfully!";
+                //}
 
 
                 var user = await _userManager.GetUserAsync(User);
@@ -100,36 +100,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         return View(viewModel);
     }
 
-
-
-
-    //when clicking Save changes on basic info in account details
-
-    //[HttpPost]
-    //public IActionResult SaveBasicInfo(AccountDetailsViewModel viewModel)
-    //{
-    //    if (TryValidateModel(viewModel.BasicInfo))
-    //    {
-    //        return RedirectToAction("Details", "Account");
-    //    }
-
-    //    ///return to details page
-    //    return View("Details", viewModel);
-    //}
-
-    ////when clicking save changes on address info in account details
-
-    //[HttpPost]
-    //public IActionResult SaveAddressInfo(AccountDetailsViewModel viewModel)
-    //{
-    //    if (TryValidateModel(viewModel.AddressInfo))
-    //    {
-    //        return RedirectToAction("Details", "Account");
-    //    }
-
-    //    ///return to details page
-    //    return View("Details", viewModel);
-    //}
 
     private async Task<AccountDetailsProfileInfoModel> PopulateProfileInfoAsync()
     {
@@ -169,7 +139,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         var user = await _userManager.GetUserAsync(User);
         if (user != null)
         {
-            var address = await _addressManager.GetAddressAsync((int)user.AddressId);
+            var address = await _addressManager.GetAddressAsync(user.AddressId.Value);
             if (address != null)
             {
                 return new AccountDetailsAddressInfoModel
@@ -182,25 +152,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
             }
         }
 
-        // Om användaren inte har en adress eller om det inte går att hitta adressinformationen, returnera en tom modell.
         return new AccountDetailsAddressInfoModel();
-
-        //    var user = await _userManager.GetUserAsync(User);
-        //    if (user != null)
-        //    {
-        //        var address = await _addressManager.GetAddressAsync(user.Address!.Id);
-        //        return new AccountDetailsAddressInfoModel
-        //        {
-        //            AddressLine_1 = address.AddressOne,
-        //            AddressLine_2 = address.AddressTwo,
-        //            PostalCode = address.PostalCode,
-        //            City = address.City,
-        //        };
-        //    }
-
-        //    return new AccountDetailsAddressInfoModel();
-
-        //}
 
     }
 

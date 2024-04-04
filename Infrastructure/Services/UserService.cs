@@ -6,13 +6,13 @@ using Infrastructure.Repositiories;
 
 namespace Infrastructure.Services;
 
-public class UserService(UserRepository userRepository, AddressService addressService)
+public class UserService(UserRepository userRepository /*AddressService addressService*/)
 {
     /// <summary>
     /// using both user repo and address service to able to do both things
     /// </summary>
     private readonly UserRepository _userRepository = userRepository;
-    private readonly AddressService _addressService = addressService;
+    //private readonly AddressService _addressService = addressService;
 
     /// <summary>
     /// create a user
