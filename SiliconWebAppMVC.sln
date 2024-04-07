@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiliconMVC", "SilcionWebApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6BCF8D02-B766-4CFF-A8B1-C30C9E40527F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiliconAPI", "SiliconAPI\SiliconAPI.csproj", "{0564D1BF-C0FE-4942-99CB-36ABFEE049E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiliconAPI", "SiliconAPI\SiliconAPI.csproj", "{02BC9519-7EF9-4C91-8054-3ECC89DF5CB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{6BCF8D02-B766-4CFF-A8B1-C30C9E40527F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BCF8D02-B766-4CFF-A8B1-C30C9E40527F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BCF8D02-B766-4CFF-A8B1-C30C9E40527F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0564D1BF-C0FE-4942-99CB-36ABFEE049E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0564D1BF-C0FE-4942-99CB-36ABFEE049E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0564D1BF-C0FE-4942-99CB-36ABFEE049E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0564D1BF-C0FE-4942-99CB-36ABFEE049E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02BC9519-7EF9-4C91-8054-3ECC89DF5CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BC9519-7EF9-4C91-8054-3ECC89DF5CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BC9519-7EF9-4C91-8054-3ECC89DF5CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BC9519-7EF9-4C91-8054-3ECC89DF5CB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,8 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     ///registrating entities. User already added
     ///
     public DbSet<AddressEntity> Addresses { get; set; }
+    public DbSet<CoursesEntity> Courses { get; set; }
+    public DbSet<SubscribersEntity> Subscribers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
