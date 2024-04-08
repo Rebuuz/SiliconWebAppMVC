@@ -1,49 +1,54 @@
-﻿<section id="newsletter">
-    <div class="container">
-        <div class="heading">
-            <h1>Don't Want to Miss Anything?</h1>
-            <img src="/images/arrows.svg" alt="">
-        </div>
-        <div class="sign-up-checkboxes">
-            <h5>Sign up for Newsletters</h5>
-            <div class="checkbox-items">
-                <div class="item">
-                    <input type="checkbox" class="form-check-input" id="daily" name="daily">
-                    <label for="daily">Daily Newsletter</label>
+﻿@using Infrastructure.Entities;
+@model SubscribersEntity;
+
+<section id="newsletter">
+    <form asp-controller="Home" asp-action="Subscribe" method="post" novalidate>
+        <div class="container">
+            <div class="heading">
+                <h1>Don't Want to Miss Anything?</h1>
+                <img src="/images/arrows.svg" alt="">
+            </div>
+            <div class="sign-up-checkboxes">
+                <h5>Sign up for Newsletters</h5>
+                <div class="checkbox-items">
+                    <div class="item">
+                        <input type="checkbox" class="form-check-input" id="daily" name="daily">
+                        <label for="daily">Daily Newsletter</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" class="form-check-input" id="advertising" name="advertising">
+                        <label for="advertising">Advertising Updates</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" id="review" class="form-check-input" name="review">
+                        <label for="review">Week in Review</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" class="form-check-input" id="event" name="event">
+                        <label for="event">Event Updates</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" class="form-check-input" id="startups" name="startups">
+                        <label for="startups">Startups Weekly</label>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" class="form-check-input" id="podcasts" name="podcasts">
+                        <label for="podcasts">Podcasts</label>
+                    </div>
                 </div>
-                <div class="item">
-                    <input type="checkbox" class="form-check-input" id="advertising" name="advertising">
-                    <label for="advertising">Advertising Updates</label>
+            </div>
+            <div class="email-signup">
+                <div class="email">
+                    <div class="input-container">
+                        <i class="fa-light fa-envelope"></i>
+                        <input asp-for="@Model.Email" type="email" placeholder="Your Email">
+                    </div>
+                    <button type="submit" class="btn-theme">Subscribe *</button>
                 </div>
-                <div class="item">
-                    <input type="checkbox" id="review" class="form-check-input" name="review">
-                    <label for="review">Week in Review</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" class="form-check-input" id="event" name="event">
-                    <label for="event">Event Updates</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" class="form-check-input" id="startups" name="startups">
-                    <label for="startups">Startups Weekly</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" class="form-check-input" id="podcasts" name="podcasts">
-                    <label for="podcasts">Podcasts</label>
+                <div class="policy">
+                    <p><span>*</span>Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="PrivacyPolicy">privacy policy.</a></p>
                 </div>
             </div>
         </div>
-        <div class="email-signup">
-            <div class="email">
-                <div class="input-container">
-                    <i class="fa-light fa-envelope"></i>
-                    <input type="email" placeholder="Your Email">
-                </div>
-                <button class="btn-theme">Subscribe *</button>
-            </div>
-            <div class="policy">
-                <p><span>*</span>Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy.</a></p>
-            </div>
-        </div>
-    </div>
+    </form>
 </section>

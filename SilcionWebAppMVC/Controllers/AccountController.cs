@@ -3,6 +3,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SiliconMVC.ViewModels;
 
 namespace SiliconMVC.Controllers;
@@ -154,6 +155,20 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
 
         return new AccountDetailsAddressInfoModel();
 
+    }
+
+    [HttpGet]
+    [Route("/account/courses")]
+    public async Task<IActionResult> Courses()
+    {
+
+        using var http = new HttpClient();
+        var response = await http.GetAsync("http://localhost:5295/api/Courses");
+        var json = await response.Content.ReadAsStringAsync();
+        var data = JsonConvert.DeserializeObject<IEnumerable<CoursesEntity>>(json);
+
+
+        return View(data);
     }
 
 }
