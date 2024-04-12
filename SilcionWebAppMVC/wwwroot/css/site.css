@@ -1299,21 +1299,49 @@ img {
 #courses .container .courses-container .box {
   box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
   border-radius: 10px;
+  position: relative;
 }
 #courses .container .courses-container .box:hover {
   transform: translateY(-3px);
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
 }
-#courses .container .courses-container .box img {
+#courses .container .courses-container .box .course-link .bestseller {
+  background: #22C55E;
+  color: white;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+#courses .container .courses-container .box .course-link .bookmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: black;
+  height: 36px;
+  width: 36px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  padding: 0.5rem;
+}
+#courses .container .courses-container .box .course-link img {
   width: 100%;
   height: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-#courses .container .courses-container .box .content {
+#courses .container .courses-container .box .course-link .content {
   padding: 1rem;
 }
-#courses .container .courses-container .box .content p {
+#courses .container .courses-container .box .course-link .content p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1322,7 +1350,7 @@ img {
   color: #565973;
   margin-bottom: 0.5rem;
 }
-#courses .container .courses-container .box .content .price {
+#courses .container .courses-container .box .course-link .content .prices {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1330,8 +1358,21 @@ img {
   font-size: 18px !important;
   color: #6366F1;
   font-weight: bold;
+  display: flex;
 }
-#courses .container .courses-container .box .content .bottom-box {
+#courses .container .courses-container .box .course-link .content .prices.discountprice {
+  color: #EF4444;
+}
+#courses .container .courses-container .box .course-link .content .prices.originalprice {
+  text-decoration: line-through;
+  color: #565973;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+}
+#courses .container .courses-container .box .course-link .content .likes-info {
   display: flex;
   border-top: 1px solid #E2E5F1;
   padding-top: 1rem;
@@ -1339,7 +1380,7 @@ img {
   gap: 0.5rem;
   align-items: center;
 }
-#courses .container .courses-container .box .content .bottom-box p {
+#courses .container .courses-container .box .course-link .content .likes-info p {
   margin: 0;
   padding-right: 1rem;
   line-height: 160%;

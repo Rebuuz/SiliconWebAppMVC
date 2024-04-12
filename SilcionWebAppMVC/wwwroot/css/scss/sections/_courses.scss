@@ -2,7 +2,7 @@
     margin-top: 1rem;
 
     .container {
-        
+
         .courses-container {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -12,49 +12,96 @@
             .box {
                 @include shadow-m;
                 border-radius: 10px;
-                
+                position: relative;
+
                 &:hover {
                     transform: translateY(-3px);
                     @include theme-shadow;
                 }
 
-                img {
-                    width: 100%;
-                    height: auto;
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px
-                }
+                .course-link {
 
-                .content {
-                    padding: 1rem;
-
-                    p {
-                        @include text-s;
-                        color: $gray-700;
-                        margin-bottom: .5rem;
-                    }
-
-                    .price {
-                        @include text-lg;
-                        color: $theme;
-                        font-weight: bold;
-                    }
-
-                    .bottom-box {
+                    .bestseller {
+                        background: $success;
+                        color: #ffff;
+                        padding: .2rem;
                         display: flex;
-                        border-top: 1px solid $gray-300;
-                        padding-top: 1rem;
-                        margin-top: 1rem;
-                        gap: .5rem;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 5px;
+                        position: absolute;
+                        left: 10px;
+                        top: 10px;
+                    }
+
+                   
+                    .bookmark {
+                        display:flex;
+                        justify-content: center;
                         align-items: center;
 
+                        border-radius: 50%;
+                        background: #fff;
+                        color: #000f;
+                        height: 36px;
+                        width: 36px;
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+
+                        border:none;
+                        padding: .5rem;
+                    }
+
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px
+                    }
+
+                    .content {
+                        padding: 1rem;
+
                         p {
-                            margin: 0;
-                            padding-right: 1rem;
                             @include text-s;
-                            color: $gray-600;
+                            color: $gray-700;
+                            margin-bottom: .5rem;
                         }
 
+                        .prices {
+                            @include text-lg;
+                            color: $theme;
+                            font-weight: bold;
+                            display: flex;
+
+                            &.discountprice {
+                                color: $danger;
+                            }
+
+                            &.originalprice {
+                                text-decoration: line-through;
+                                color: $gray-700;
+                                @include text-s;
+                            }
+                        }
+
+                        .likes-info {
+                            display: flex;
+                            border-top: 1px solid $gray-300;
+                            padding-top: 1rem;
+                            margin-top: 1rem;
+                            gap: .5rem;
+                            align-items: center;
+
+                            p {
+                                margin: 0;
+                                padding-right: 1rem;
+                                @include text-s;
+                                color: $gray-600;
+                            }
+                        }
                     }
                 }
             }
@@ -63,7 +110,7 @@
         .carousel {
             display: flex;
             padding-top: 2rem;
-            
+
             .carousel-items {
                 display: flex;
                 justify-content: center;
@@ -102,7 +149,7 @@
                     align-items: center;
                     justify-content: center;
                     border-radius: 5px;
-                    @include shadow-m; 
+                    @include shadow-m;
                 }
             }
         }

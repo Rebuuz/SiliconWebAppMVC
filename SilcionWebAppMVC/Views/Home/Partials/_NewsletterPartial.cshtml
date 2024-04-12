@@ -1,5 +1,5 @@
 ﻿@using Infrastructure.Entities;
-@model SubscribersEntity;
+@model SubscribeViewModel;
 
 <section id="newsletter">
     <form asp-controller="Home" asp-action="Subscribe" asp-fragment="Newsletter" method="post" novalidate>
@@ -12,28 +12,28 @@
                 <h5>Sign up for Newsletters</h5>
                 <div class="checkbox-items">
                     <div class="item">
-                        <input type="checkbox" class="form-check-input" id="daily" name="daily">
-                        <label for="daily">Daily Newsletter</label>
+                        <input asp-for="DailyNewsletter" type="checkbox" class="form-check-input" id="daily">
+                        <label asp-for="DailyNewsletter">Daily Newsletter</label>
                     </div>
                     <div class="item">
-                        <input type="checkbox" class="form-check-input" id="advertising" name="advertising">
-                        <label for="advertising">Advertising Updates</label>
+                        <input asp-for="AdvertisingUpdates" type="checkbox" class="form-check-input" id="advertising">
+                        <label asp-for="AdvertisingUpdates">Advertising Updates</label>
                     </div>
                     <div class="item">
-                        <input type="checkbox" id="review" class="form-check-input" name="review">
-                        <label for="review">Week in Review</label>
+                        <input asp-for="WeekInReview" type="checkbox" id="review" class="form-check-input">
+                        <label asp-for="WeekInReview">Week in Review</label>
                     </div>
                     <div class="item">
-                        <input type="checkbox" class="form-check-input" id="event" name="event">
-                        <label for="event">Event Updates</label>
+                        <input asp-for="EventUpdates" type="checkbox" class="form-check-input" id="event">
+                        <label asp-for="EventUpdates">Event Updates</label>
                     </div>
                     <div class="item">
-                        <input type="checkbox" class="form-check-input" id="startups" name="startups">
-                        <label for="startups">Startups Weekly</label>
+                        <input asp-for="StartupsWeekly" type="checkbox" class="form-check-input" id="startups">
+                        <label asp-for="StartupsWeekly">Startups Weekly</label>
                     </div>
                     <div class="item">
-                        <input type="checkbox" class="form-check-input" id="podcasts" name="podcasts">
-                        <label for="podcasts">Podcasts</label>
+                        <input asp-for="Podcasts" type="checkbox" class="form-check-input" id="podcasts">
+                        <label asp-for="Podcasts">Podcasts</label>
                     </div>
                 </div>
             </div>

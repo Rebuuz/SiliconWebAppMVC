@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SiliconMVC.ViewModels;
 using System.Text;
 
 namespace SiliconMVC.Controllers;
@@ -18,7 +19,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Subscribe(SubscribersEntity model)
+    public async Task<IActionResult> Subscribe(SubscribeViewModel model)
     {
         if (ModelState.IsValid)
         {

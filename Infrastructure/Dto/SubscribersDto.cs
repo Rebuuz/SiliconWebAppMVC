@@ -1,6 +1,9 @@
-﻿namespace SiliconMVC.ViewModels;
+﻿
+using System.Reflection.Metadata;
 
-public class SubscribeViewModel
+namespace Infrastructure.Dto;
+
+public class SubscribersDto
 {
     public string Email { get; set; } = null!;
     public bool DailyNewsletter { get; set; }

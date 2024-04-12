@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Context;
+using Infrastructure.Dto;
 using Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,18 +19,29 @@ public class SubscribersController(DataContext context) : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> CreateSubscriber(string email)
+    public async Task<IActionResult> CreateSubscriber(SubscribersDto subscribersDto)
     {
         ///creating a sunscriber, checking with modelstate if it's valid
         if (ModelState.IsValid)
         {
             ///save to database
             ///if it doesn't find an an email already it should create one and save to the database 
-            if (!await _context.Subscribers.AnyAsync(x => x.Email == email))
+            if (!await _context.Subscribers.AnyAsync(x => x.Email == subscribersDto.Email))
             {
                 try
                 {
-                    var subscriberEntity = new SubscribersEntity { Email = email };
+                    var subscriberEntity = new SubscribersEntity
+                    { 
+                        Email = subscribersDto.Email,
+                        AdvertisingUpdates = subscribersDto.AdvertisingUpdates,
+                        DailyNewsletter = subscribersDto.DailyNewsletter,
+                        EventUpdates = subscribersDto.EventUpdates,
+                        Podcasts = subscribersDto.Podcasts,
+                        StartupsWeekly = subscribersDto.StartupsWeekly,
+                        WeekInReview = subscribersDto.WeekInReview
+                    
+                    };
+                    
                     _context.Subscribers.Add(subscriberEntity);
                     await _context.SaveChangesAsync();
 
