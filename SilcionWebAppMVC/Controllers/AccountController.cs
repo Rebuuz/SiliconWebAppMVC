@@ -34,6 +34,16 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         return View(viewModel);
     }
 
+    /// <summary>
+    /// Upload profile image method
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        return RedirectToAction("Details", "Account");  
+    }
+
 
     [HttpPost]
     [Route("/account/details")]

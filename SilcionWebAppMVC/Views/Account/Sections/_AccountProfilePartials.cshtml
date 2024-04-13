@@ -2,8 +2,13 @@
 
 <div class="content-left">
     <div class="avatar">
-        <img src="/images/avatar-img.svg" alt="">
-        <a href="#"><i class="fa-solid fa-rotate-reverse"></i></a>
+        <img src="~/images/avatar.png" alt="avatar image">
+
+        <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+            <input id="uploadProfileImage" type="file" name="file" />
+            <button type="submit"><a href="#"><i class="fa-solid fa-rotate-reverse"></i></a></button>
+        </form> 
+ 
     </div>
     <div class="account-info">
         <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
