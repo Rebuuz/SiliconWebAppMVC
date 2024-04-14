@@ -1,19 +1,30 @@
 ﻿@model AccountDetailsViewModel
 
-<div class="content-left">
-    <div class="avatar">
-        <img src="~/images/avatar.png" alt="avatar image">
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
-        <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
-            <input id="uploadProfileImage" type="file" name="file" />
-            <button type="submit"><a href="#"><i class="fa-solid fa-rotate-reverse"></i></a></button>
-        </form> 
- 
+@if (user != null)
+{
+    <div class="content-left">
+        <div class="avatar">
+            <img src="~/images/avatar.png" alt="avatar image">
+
+            <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                <input id="uploadProfileImage" type="file" name="file" hidden />
+                <label for="uploadProfileImage"><i class="fa-solid fa-rotate-reverse"></i></label>
+            </form>
+
+        </div>
+        <div class="account-info">
+            <h5>@Model.ProfileInfo?.FirstName @Model.ProfileInfo?.LastName</h5>
+            <p>@Model.ProfileInfo?.EmailAddress</p>
+        </div>
+        <a asp-controller="Account" asp-action="Details" class="btn-theme-s"><i class="fa-regular fa-gear"></i>Account Details</a>
+        <a asp-controller="Auth" asp-action="SignOut" class="btn-gray"><i class="fa-regular fa-arrow-right-from-bracket"></i>Sign Out</a>
     </div>
-    <div class="account-info">
-        <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
-        <p>@Model.ProfileInfo.EmailAddress</p>
-    </div>
-    <a asp-controller="Account" asp-action="Details" class="btn-theme-s"><i class="fa-regular fa-gear"></i>Account Details</a>
-    <a asp-controller="Auth" asp-action="SignOut" class="btn-gray"><i class="fa-regular fa-arrow-right-from-bracket"></i>Sign Out</a>
-</div>
+}
+else
+{
+    <div>User not found.</div>
+};

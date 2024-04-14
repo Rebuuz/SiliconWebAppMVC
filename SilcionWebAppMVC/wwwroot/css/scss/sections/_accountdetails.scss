@@ -45,7 +45,7 @@
                     border-radius: 50%;
                 }
 
-                a {
+                label, i {
                     position: absolute;
                     bottom: 0;
                     right: 0;
@@ -58,11 +58,22 @@
                     justify-content: center;
                     align-items: center;
 
+                    &:hover {
+                        background: $gray-800;
+                        color: #fff;
+                        border: 1px $gray-800 solid;
+                    }
 
-                    i {
+
+                    /*i {
                         color: $gray-800;
                         margin: 0 auto;
-                    }
+
+                        &:hover {
+                            color: $gray-100;
+
+                        }
+                    }*/
                 }
             }
 

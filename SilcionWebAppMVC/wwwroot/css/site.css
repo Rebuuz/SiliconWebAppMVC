@@ -1689,7 +1689,7 @@ img {
   height: 120px;
   border-radius: 50%;
 }
-#account-details .container .content-left .avatar a {
+#account-details .container .content-left .avatar label, #account-details .container .content-left .avatar i {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -1701,10 +1701,20 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*i {
+      color: $gray-800;
+      margin: 0 auto;
+
+      &:hover {
+          color: $gray-100;
+
+      }
+  }*/
 }
-#account-details .container .content-left .avatar a i {
-  color: #33354D;
-  margin: 0 auto;
+#account-details .container .content-left .avatar label:hover, #account-details .container .content-left .avatar i:hover {
+  background: #33354D;
+  color: #fff;
+  border: 1px #33354D solid;
 }
 #account-details .container .content-left .account-info {
   padding-top: 1rem;

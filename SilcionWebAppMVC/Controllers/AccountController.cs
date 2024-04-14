@@ -10,21 +10,17 @@ namespace SiliconMVC.Controllers;
 
 // protects the account page if not signed in. 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager, AccountManager accountManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     //private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly AddressManager _addressManager = addressManager;
+    private readonly AccountManager _accountManager = accountManager;
 
     [HttpGet]
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
-
-        //var viewModel = new AccountDetailsViewModel()
-        //{
-        //    BasicInfo = await PopulateDetailsViewModelAsync()
-        //};
 
         var viewModel = new AccountDetailsViewModel();
         viewModel.ProfileInfo ??= await PopulateProfileInfoAsync();
@@ -41,6 +37,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     [HttpPost]
     public async Task<IActionResult> UploadImage(IFormFile file)
     {
+        var result = await _accountManager.UploadProfileImageAsync(User, file);
+
         return RedirectToAction("Details", "Account");  
     }
 
@@ -80,12 +78,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                 
 
                 var adressId = await _addressManager.GetOrCreateAddressAsync(viewModel.AddressInfo.AddressLine_1, viewModel.AddressInfo.AddressLine_2, viewModel.AddressInfo.PostalCode, viewModel.AddressInfo.City);
-                
-                //if (adressId > 0)
-                //{
-                //    ModelState.AddModelError("IncorrectValues", "Something went wrong, unable to save the data!");
-                //    ViewData["ErrorMessage"] = "Address created successfully!";
-                //}
 
 
                 var user = await _userManager.GetUserAsync(User);

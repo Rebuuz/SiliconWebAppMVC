@@ -24,9 +24,10 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 //other services
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserRepository>();
-//builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<UserManager>();
 builder.Services.AddScoped<AddressManager>();
+builder.Services.AddScoped<AccountManager>();
 
 //cookie
 builder.Services.ConfigureApplicationCookie(x =>

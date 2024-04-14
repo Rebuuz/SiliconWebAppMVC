@@ -1,6 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.Entities;
 
@@ -17,7 +15,7 @@ public class UserEntity : IdentityUser
     public string LastName { get; set; } = null!;
 
     public string? Bio { get; set; }
-    
+
     public string? ProfileImage { get; set; }
 
     public int? AddressId { get; set; }
