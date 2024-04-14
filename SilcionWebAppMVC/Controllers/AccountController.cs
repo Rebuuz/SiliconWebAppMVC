@@ -30,17 +30,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
         return View(viewModel);
     }
 
-    /// <summary>
-    /// Upload profile image method
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost]
-    public async Task<IActionResult> UploadImage(IFormFile file)
-    {
-        var result = await _accountManager.UploadProfileImageAsync(User, file);
-
-        return RedirectToAction("Details", "Account");  
-    }
 
 
     [HttpPost]
@@ -171,6 +160,19 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
 
 
         return View(data);
+    }
+
+
+    /// <summary>
+    /// Upload profile image method
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        var result = await _accountManager.UploadProfileImageAsync(User, file);
+
+        return RedirectToAction("Details", "Account");
     }
 
 }

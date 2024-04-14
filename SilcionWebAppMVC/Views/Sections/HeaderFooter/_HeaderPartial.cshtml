@@ -1,4 +1,8 @@
-﻿@inject SignInManager<UserEntity> _signInManager
+﻿@inject SignInManager<UserEntity> _signInManager;
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 <header>
     <div class="container">
@@ -34,7 +38,7 @@
             {
                 <a asp-controller="Auth" asp-action="SignOut" class="btn-gray"><i class="fa-regular fa-right-to-bracket"></i><span>Sign out</span></a>
                 ///change this to image later
-                <a asp-controller="Account" asp-action="Details" class="btn-theme"><i class="fa-regular fa-user"></i><span>Account</span></a>
+                <a asp-controller="Account" asp-action="Details"><img src="~/profile/@user.ProfileImage" alt="user"></a>
             }
             else
             {

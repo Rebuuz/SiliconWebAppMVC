@@ -1,4 +1,5 @@
-﻿using Infrastructure.Entities;
+﻿using Infrastructure.Context;
+using Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +10,9 @@ using System.Security.Claims;
 
 namespace Infrastructure.Services;
 
-public class AccountManager(DbContext dbContext, UserManager<UserEntity> userManager, IConfiguration configuration)
+public class AccountManager(DataContext dbContext, UserManager<UserEntity> userManager, IConfiguration configuration)
 {
-    private readonly DbContext _dbContext = dbContext;
+    private readonly DataContext _dbContext = dbContext;
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly IConfiguration _configuration = configuration;
 

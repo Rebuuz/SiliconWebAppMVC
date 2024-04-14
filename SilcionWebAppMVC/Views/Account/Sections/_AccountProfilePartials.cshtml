@@ -8,7 +8,7 @@
 {
     <div class="content-left">
         <div class="avatar">
-            <img src="~/images/avatar.png" alt="avatar image">
+            <img src="~/profile/@user.ProfileImage" alt="avatar image">
 
             <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
                 <input id="uploadProfileImage" type="file" name="file" hidden />
@@ -27,4 +27,4 @@
 else
 {
     <div>User not found.</div>
-};
+}

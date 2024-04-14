@@ -437,6 +437,10 @@ header .container .account-btns {
     display: flex;
   }
 }
+header .container .account-btns img {
+  width: 44px;
+  height: 44px;
+}
 header .container .btn-mobile {
   grid-area: mobile;
   display: block;
