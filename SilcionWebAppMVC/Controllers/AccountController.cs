@@ -129,13 +129,14 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     {
 
         var user = await _userManager.GetUserAsync(User);
-        if (user != null)
+        if (user != null && user.AddressId != null)
         {
             var address = await _addressManager.GetAddressAsync(user.AddressId.Value);
             if (address != null)
             {
                 return new AccountDetailsAddressInfoModel
                 {
+                    Id = user.AddressId,
                     AddressLine_1 = address.AddressOne,
                     AddressLine_2 = address.AddressTwo,
                     PostalCode = address.PostalCode,

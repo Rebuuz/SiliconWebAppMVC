@@ -35,6 +35,6 @@ public class HomeController : Controller
             }
         }
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "Home", "Newsletter");
     }
 }

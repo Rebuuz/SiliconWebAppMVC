@@ -41,7 +41,8 @@
                 <div class="email">
                     <div class="input-container">
                         <i class="fa-light fa-envelope"></i>
-                        <input asp-for="@Model.Email" type="email" placeholder="Your Email">
+                        <input asp-for="Email" type="email" placeholder="Your Email" required>
+                        <span asp-validation-for="Email"></span>
                     </div>
                     <button type="submit" class="btn-theme">Subscribe *</button>
                 </div>
@@ -52,3 +53,5 @@
         </div>
     </form>
 </section>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

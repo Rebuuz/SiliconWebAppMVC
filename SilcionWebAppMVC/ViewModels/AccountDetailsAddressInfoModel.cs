@@ -8,6 +8,8 @@ public class AccountDetailsAddressInfoModel
     /// Making all of these not required to add....
     /// want to make all of them required if they fill in one, except addressline 2 which is ultimately optional. 
     /// </summary>
+    /// 
+    public int? Id { get; set; } 
 
     [Required(ErrorMessage = "A valid address is required")]
     [Display(Name = "Address line 1", Prompt = "Enter your address line", Order = 0)]

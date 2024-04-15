@@ -131,9 +131,6 @@ public class AuthController : Controller
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
 
-        //await HttpContext.SignOutAsync();
-        //return RedirectToAction("Index", "Home");
-
     }
 
 

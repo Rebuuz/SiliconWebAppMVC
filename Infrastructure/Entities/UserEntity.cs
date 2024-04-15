@@ -16,7 +16,7 @@ public class UserEntity : IdentityUser
 
     public string? Bio { get; set; }
 
-    public string? ProfileImage { get; set; }
+    public string? ProfileImage { get; set; } = "avatar.png";
 
     public int? AddressId { get; set; }
     public AddressEntity? Address { get; set; }

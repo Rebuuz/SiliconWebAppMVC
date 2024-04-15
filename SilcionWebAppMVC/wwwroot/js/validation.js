@@ -97,22 +97,39 @@ inputs.forEach(input => {
     }
 })
 
-///bootstrap js for validation
-//(() => {
-//    'use strict'
 
-//    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//    const forms = document.querySelectorAll('.needs-validation')
+const formSubmitHandler = async (event) => {
+    event.preventDefault(); // Förhindra standard beteende av formulär skickande
 
-//    // Loop over them and prevent submission
-//    Array.from(forms).forEach(form => {
-//        form.addEventListener('submit', event => {
-//            if (!form.checkValidity()) {
-//                event.preventDefault()
-//                event.stopPropagation()
-//            }
+    // Utför din validering här
+    let isValid = true;
+    inputs.forEach(input => {
+        // Kör valideringsfunktioner för varje inmatningsfält
+        // Om någon av dem returnerar false, sätt isValid till false
+    });
 
-//            form.classList.add('was-validated')
-//        }, false)
-//    })
-//})()
+    // Om isValid är true, fortsätt att skicka formuläret via AJAX
+    if (isValid) {
+        try {
+            const response = await fetch(event.target.action, {
+                method: 'POST',
+                body: new FormData(event.target)
+            });
+
+            if (response.ok) {
+                // Uppdatera nyhetsbrevsdelen med den nya informationen
+                const newsletterSection = document.querySelector('.newsletter-section');
+                const newNewsletterContent = await response.text();
+                newsletterSection.innerHTML = newNewsletterContent;
+            } else {
+                console.error('Server error:', response.status);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }
+};
+
+forms.forEach(form => {
+    form.addEventListener('submit', formSubmitHandler);
+});

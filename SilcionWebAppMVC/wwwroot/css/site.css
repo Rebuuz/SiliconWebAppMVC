@@ -1142,27 +1142,44 @@ img {
     height: 40px;
     border: 1px #D4D7E5 solid;
   }
+  #newsletter .container .email-signup .email .input-container input.input-validation-error {
+    border: 1px solid #EF4444;
+  }
+  #newsletter .container .email-signup .email .input-container input.input-validation-error::placeholder {
+    color: #EF4444;
+  }
+  #newsletter .container .email-signup .email .input-container input::placeholder {
+    color: #565973;
+    line-height: 160%;
+    font-weight: 400;
+    color: #565973;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px !important;
+  }
 }
-#newsletter .container .email-signup .email .input-container input::placeholder {
+#newsletter .container .email-signup .email .input-container span {
+  padding: 0.5rem;
+}
+#newsletter .container .email-signup .email .input-container span.field-validation-error {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  font-size: 16px !important;
-  color: #B4B7C9;
+  font-size: 14px !important;
+  color: #EF4444;
 }
 @media (min-width: 992px) {
-  #newsletter .container .email-signup .email .button {
+  #newsletter .container .email-signup .email .input-container .button {
     margin-left: 10px;
   }
 }
 @media (min-width: 992px) {
-  #newsletter .container .email-signup .policy {
+  #newsletter .container .email-signup .email .policy {
     padding-top: 1rem;
     text-align: left;
   }
 }
-#newsletter .container .email-signup .policy p {
+#newsletter .container .email-signup .email .policy p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1170,10 +1187,10 @@ img {
   font-size: 14px !important;
   color: #9397AD;
 }
-#newsletter .container .email-signup .policy p span {
+#newsletter .container .email-signup .email .policy p span {
   color: #6366F1;
 }
-#newsletter .container .email-signup .policy p a {
+#newsletter .container .email-signup .email .policy p a {
   color: #6366F1;
 }
 
@@ -1488,12 +1505,6 @@ img {
   margin-bottom: 1rem !important;
 }
 #signin .container #error-msg {
-  /*          display: flex;
-              justify-content: center;
-              text-align: center;
-              border: 1px solid $danger;
-              border-radius: 8px;
-              padding: 1rem;*/
   color: #EF4444;
 }
 #signin .container div {
@@ -1564,7 +1575,6 @@ img {
   justify-content: center;
   align-items: center;
   gap: 1rem 2rem;
-  /*grid-template-columns: repeat(12, 1fr);*/
 }
 @media (min-width: 992px) {
   #signup .container {
