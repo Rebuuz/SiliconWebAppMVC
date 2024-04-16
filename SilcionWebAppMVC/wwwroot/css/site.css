@@ -1133,6 +1133,9 @@ img {
     padding-left: 1rem;
     color: #B4B7C9;
   }
+  #newsletter .container .email-signup .email .input-container i.input-validation-error {
+    color: #EF4444;
+  }
 }
 @media (min-width: 992px) {
   #newsletter .container .email-signup .email .input-container input {
@@ -1157,29 +1160,22 @@ img {
     font-size: 14px !important;
   }
 }
-#newsletter .container .email-signup .email .input-container span {
-  padding: 0.5rem;
-}
-#newsletter .container .email-signup .email .input-container span.field-validation-error {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px !important;
-  color: #EF4444;
-}
 @media (min-width: 992px) {
-  #newsletter .container .email-signup .email .input-container .button {
+  #newsletter .container .email-signup .email .button {
     margin-left: 10px;
   }
 }
+#newsletter .container .email-signup .error-msg {
+  color: #EF4444;
+  margin-top: 0.5rem;
+}
 @media (min-width: 992px) {
-  #newsletter .container .email-signup .email .policy {
+  #newsletter .container .email-signup .policy {
     padding-top: 1rem;
     text-align: left;
   }
 }
-#newsletter .container .email-signup .email .policy p {
+#newsletter .container .email-signup .policy p {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -1187,10 +1183,10 @@ img {
   font-size: 14px !important;
   color: #9397AD;
 }
-#newsletter .container .email-signup .email .policy p span {
+#newsletter .container .email-signup .policy p span {
   color: #6366F1;
 }
-#newsletter .container .email-signup .email .policy p a {
+#newsletter .container .email-signup .policy p a {
   color: #6366F1;
 }
 

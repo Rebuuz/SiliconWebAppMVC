@@ -32,7 +32,6 @@ const textValidator = (element, minLength = 2) => {
         formErrorHandler(element, false)
     }  
 
-    
 }
 
 const emailValidator = (element) => {
@@ -56,8 +55,6 @@ const passwordValidator = (element) => {
         const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?\/\\-]).{8,}$/;
         formErrorHandler(element, regEx.test(element.value))
     }
-
-
 }
 
 const checkboxValidator = (element) => {
@@ -67,7 +64,6 @@ const checkboxValidator = (element) => {
         formErrorHandler(element, false)
     }
 }
-
 
 let forms = document.querySelectorAll('form')
 let inputs = forms[0].querySelectorAll('input')
@@ -97,39 +93,49 @@ inputs.forEach(input => {
     }
 })
 
+//Extra validation so as to not reload page when trying to submit an empty email form (subscription)
+//document.querySelector('form').addEventListener('submit', async function (event) {
+//    event.preventDefault(); 
 
-const formSubmitHandler = async (event) => {
-    event.preventDefault(); // Förhindra standard beteende av formulär skickande
+//    let isValid = true;
 
-    // Utför din validering här
-    let isValid = true;
-    inputs.forEach(input => {
-        // Kör valideringsfunktioner för varje inmatningsfält
-        // Om någon av dem returnerar false, sätt isValid till false
-    });
+//    // check whether is is valid
+//    inputs.forEach(input => {
+//        if (input.dataset.val === 'true') {
+//            switch (input.type) {
+//                case 'email':
+//                    emailValidator(input);
+//                    break;
+//            }
 
-    // Om isValid är true, fortsätt att skicka formuläret via AJAX
-    if (isValid) {
-        try {
-            const response = await fetch(event.target.action, {
-                method: 'POST',
-                body: new FormData(event.target)
-            });
+//            // If it's false - add message
+//            if (!input.classList.contains('input-validation-error')) {
+//                isValid = false;
+//            }
+//        }
+//    });
 
-            if (response.ok) {
-                // Uppdatera nyhetsbrevsdelen med den nya informationen
-                const newsletterSection = document.querySelector('.newsletter-section');
-                const newNewsletterContent = await response.text();
-                newsletterSection.innerHTML = newNewsletterContent;
-            } else {
-                console.error('Server error:', response.status);
-            }
-        } catch (error) {
-            console.error('Fetch error:', error);
-        }
-    }
-};
+//    if (isValid) {
+//        // If valid, send the data in the form 
+//        const form = event.target;
+//        const formData = new FormData(form);
 
-forms.forEach(form => {
-    form.addEventListener('submit', formSubmitHandler);
-});
+//        try {
+//            const response = await fetch(form.action, {
+//                method: form.method,
+//                body: formData
+//            });
+
+//            if (response.ok) {
+//                // check in the console whether it is successful or not. A message will be on the page for viewer
+//                console.log('Prenumerationen lyckades!');
+//            } else {
+//                console.error('Fel vid prenumerationsförsök:', response.statusText);
+//            }
+//        } catch (error) {
+//            console.error('Något gick fel:', error);
+//        }
+//    }
+//});
+
+

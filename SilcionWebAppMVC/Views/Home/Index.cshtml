@@ -1,36 +1,247 @@
-﻿
+﻿@using Infrastructure.Entities;
+@model SubscribeViewModel;
 
-<!--Showcase partial view import-->
-<div class="showcase">
-    @await Html.PartialAsync("~/Views/Home/Partials/_ShowcasePartial.cshtml")
-</div>
 
-<!--Feature partial view import-->
-<div class="feature-section">
-    @await Html.PartialAsync("~/Views/Home/Partials/_FeaturesPartial.cshtml")
-</div>
+<section id="showcase">
+    <img src="/images/showcase-taskmaster.svg" alt="Lägg till text här" class="background-image">
+    <div class="container">
+        <div class="content">
+            <h1>Task Management Assistant You Gonna Love</h1>
+            <p>We offer you a new generation of task management system. Plan, manage & track all your tasks in one flexible tool.</p>
+            <a href="#" class="btn-theme-s">Get started for free</a>
+            <h6>Largest companies use our tool to work efficiently</h6>
+            <div class="brands">
+                <img src="/images/brand-logo-1.svg" alt="">
+                <img src="/images/brand-logo-2.svg" alt="">
+                <img src="/images/brand-logo-3.svg" alt="">
+                <img src="/images/brand-logo-4.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
 
-<!--Light/Dark show mode partial view import-->
-<div class="light-dark-section">
-    @await Html.PartialAsync("~/Views/Home/Partials/_LightDarkPartial.cshtml")
-</div>
+<sections id="features">
+    <div class="container">
+        <h1>What Do You Get with Our Tool?</h1>
+        <p class="p-heading">Make sure all your tasks are organized so you can set the priorities and focus on important.</p>
+        <div class="tool-features">
+            <div class="box">
+                <img src="/images/chat-icon.svg" alt="Alt text här">
+                <h5>Comments on Tasks</h5>
+                <p>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+            </div>
+            <div class="box">
+                <img src="/images/presentation-icon.svg" alt="Alt text här">
+                <h5>Tasks Analytics</h5>
+                <p>Non imperdiet facilisis nulla tellus Morbi scelerisque eget adipiscing vulputate.</p>
+            </div>
+            <div class="box">
+                <img src="/images/add-group-icon.svg" alt="Alt text här">
+                <h5>Multiple Assignees</h5>
+                <p>A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.</p>
+            </div>
+            <div class="box">
+                <img src="/images/bell-icon.svg" alt="Alt text här">
+                <h5>Comments on Tasks</h5>
+                <p>Diam, suspendisse velit cras ac. Lobortis diam volutpat, eget pellentesque viverra.</p>
+            </div>
+            <div class="box">
+                <img src="/images/test-icon.svg" alt="Alt text här">
+                <h5>Comments on Tasks</h5>
+                <p>Mi feugiat hac id in. Sit elit placerat lacus nibh lorem ridiculus lectus.</p>
+            </div>
+            <div class="box">
+                <img src="/images/shield-icon.svg" alt="Alt text här">
+                <h5>Comments on Tasks</h5>
+                <p>Aliquam malesuada neque eget elit nulla vestibulum nunc cras.</p>
+            </div>
+        </div>
+    </div>
+</sections>
 
-<!--Manage work partial view import-->
-<div class="manage-work-section">
-    @await Html.PartialAsync("~/Views/Home/Partials/_ManageWorkPartial.cshtml")
-</div>
+<section id="light-dark-mode">
+    <div class="content">
+        <div class="dark">
+            <div class="left-text">
+                <h1 class="light-text">Switch Between </h1>
+            </div>
+        </div>
+        <div class="light">
+            <div class="right-text">
+                <h1 class="dark-text">Light & Dark Mode</h1>
+            </div>
+        </div>
+        <div class="center-image">
+            <div class="image-div">
+                <img class="mockup-img" src="/images/mockup.svg" alt="bildtext">
+                <img src="/images/button-darkpreview.svg" alt="text">
+            </div>
+        </div>
+    </div>
+</section>
 
-<!--Download partial view import-->
-<div class="download-section">
-    @await Html.PartialAsync("~/Views/Home/Partials/_DownloadPartial.cshtml")
-</div>
+<section id="manage-work">
+    <div class="container">
+        <img src="/images/image-work.svg" alt="bildtext">
+        <div class="content">
+            <h2>Manage Your Work</h2>
+            <p><i class="fa-regular fa-circle-check"></i>Powerful project management</p>
+            <p><i class="fa-regular fa-circle-check"></i>Transparent work management</p>
+            <p><i class="fa-regular fa-circle-check"></i>Manage work & focus on the most important tasks</p>
+            <p><i class="fa-regular fa-circle-check"></i>Track your progress with interactive charts</p>
+            <p><i class="fa-regular fa-circle-check"></i>Easiest way to track time spent on tasks</p>
 
-<!--Tools partial view import-->
-<div class="tools-section">
-    @await Html.PartialAsync("~/Views/Home/Partials/_ToolsPartial.cshtml")
-</div>
+            <button class="btn-theme">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+</section>
 
-<!--Newsletter partial view import-->
-<div class="newsletter-section" asp-fragment="Newsletter">
-    @await Html.PartialAsync("~/Views/Home/Partials/_NewsletterPartial.cshtml")
-</div>
+<section id="download">
+    <div class="container">
+        <img src="/images/screens.svg" alt="text här">
+        <div class="content">
+            <h1>Download Our App for Any Devices:</h1>
+            <div class="box">
+                <div class="box-items">
+                    <div class="items">
+                        <p>App Store</p>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="download-info">
+                        <h4>Editor's Choice</h4>
+                        <p>rating 4.7, 187K+ reviews</p>
+                    </div>
+                </div>
+                <img src="images/appstore.svg" alt="text här">
+            </div>
+            <div class="box">
+                <div class="box-items">
+                    <div class="items">
+                        <p>Google Store</p>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="download-info">
+                        <h4>App of the Day</h4>
+                        <p>rating 4.8, 30K+ reviews</p>
+                    </div>
+                </div>
+                <img src="images/googleplay.svg" alt="text här">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tools">
+    <div class="container">
+        <h1>Integrate Top Work Tools</h1>
+        <p class="p-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.</p>
+        <div class="tool-items">
+            <div class="box">
+                <img src="/images/google-icon.svg" alt="">
+                <p>Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis.</p>
+            </div>
+            <div class="box">
+                <img src="/images/zoom-icon.svg" alt="">
+                <p>In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor.</p>
+            </div>
+            <div class="box">
+                <img src="/images/slack-icon.svg" alt="">
+                <p>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+            </div>
+            <div class="box">
+                <img src="/images/gmail-icon.svg" alt="">
+                <p>Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent.</p>
+            </div>
+            <div class="box">
+                <img src="/images/trello-icon.svg" alt="">
+                <p>Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna.</p>
+            </div>
+            <div class="box">
+                <img src="/images/mailchimp-icon.svg" alt="">
+                <p>A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris.</p>
+            </div>
+            <div class="box">
+                <img src="/images/dropbox-icon.svg" alt="">
+                <p>Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea.</p>
+            </div>
+            <div class="box">
+                <img src="/images/evernote-icon.svg" alt="">
+                <p>Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="newsletter">
+    <form asp-controller="Home" asp-action="Subscribe" asp-fragment="newsletter" method="post" novalidate>
+        <div class="container">
+            <div class="heading">
+                <h1>Don't Want to Miss Anything?</h1>
+                <img src="/images/arrows.svg" alt="">
+            </div>
+            <div class="sign-up-checkboxes">
+                <h5>Sign up for Newsletters</h5>
+                <div class="checkbox-items">
+                    <div class="item">
+                        <input asp-for="DailyNewsletter" type="checkbox" class="form-check-input" id="daily">
+                        <label asp-for="DailyNewsletter">Daily Newsletter</label>
+                    </div>
+                    <div class="item">
+                        <input asp-for="AdvertisingUpdates" type="checkbox" class="form-check-input" id="advertising">
+                        <label asp-for="AdvertisingUpdates">Advertising Updates</label>
+                    </div>
+                    <div class="item">
+                        <input asp-for="WeekInReview" type="checkbox" id="review" class="form-check-input">
+                        <label asp-for="WeekInReview">Week in Review</label>
+                    </div>
+                    <div class="item">
+                        <input asp-for="EventUpdates" type="checkbox" class="form-check-input" id="event">
+                        <label asp-for="EventUpdates">Event Updates</label>
+                    </div>
+                    <div class="item">
+                        <input asp-for="StartupsWeekly" type="checkbox" class="form-check-input" id="startups">
+                        <label asp-for="StartupsWeekly">Startups Weekly</label>
+                    </div>
+                    <div class="item">
+                        <input asp-for="Podcasts" type="checkbox" class="form-check-input" id="podcasts">
+                        <label asp-for="Podcasts">Podcasts</label>
+                    </div>
+                </div>
+            </div>
+            <div class="email-signup">
+                <div class="email">
+                    <div class="input-container">
+                        <i class="fa-light fa-envelope"></i>
+                        <input asp-for="Email" type="email" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn-theme">Subscribe *</button>
+                </div>
+                @* <div class="alert alert-danger"> *@
+                    <span asp-validation-for="Email" class="error-msg"></span>
+                @* </div> *@
+                @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"] as string))
+                {
+                    <div class="alert alert-success">@ViewData["ErrorMessage"]</div>
+                }
+                <div class="policy">
+                    <p><span>*</span>Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="PrivacyPolicy">privacy policy.</a></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

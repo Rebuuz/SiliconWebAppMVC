@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SiliconMVC.ViewModels;
+using System.Net;
 using System.Text;
 
 namespace SiliconMVC.Controllers;
@@ -31,10 +32,10 @@ public class HomeController : Controller
 
             if (response.IsSuccessStatusCode)
             {
-                ViewData["You are subscribed!"] = true;
+                ViewData["You Are Subscribed"] = true;
             }
         }
 
-        return RedirectToAction("Index", "Home", "Newsletter");
+        return RedirectToAction("Index", "Home", "newsletter");
     }
 }
