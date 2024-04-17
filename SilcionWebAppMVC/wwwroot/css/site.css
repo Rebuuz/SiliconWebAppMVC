@@ -375,16 +375,16 @@ a:hover {
   color: #FFFFFF;
 }
 
-.alert {
-  background-color: #F5D7DA;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 8px;
-  color: black;
+/*.alert {
+    background-color: #F5D7DA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    color: black;
 }
-
+*/
 header {
   padding: 15px 0;
 }

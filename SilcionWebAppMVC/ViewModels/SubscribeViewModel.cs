@@ -4,7 +4,7 @@ namespace SiliconMVC.ViewModels;
 
 public class SubscribeViewModel
 {
-    [Display(Name = "Email Address", Prompt = "Enter your email address", Order = 2)]
+    [Display(Name = "Email Address", Prompt = "Enter your email address")]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]
     [RegularExpression("^[^@\\s]+@[^\\s]+\\.[^@\\s]{2,}$", ErrorMessage = "Email address is required. Must be of format xx@xx.xx.")]

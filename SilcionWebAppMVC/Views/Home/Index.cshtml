@@ -229,13 +229,23 @@
                     </div>
                     <button type="submit" class="btn-theme">Subscribe *</button>
                 </div>
-                @* <div class="alert alert-danger"> *@
-                    <span asp-validation-for="Email" class="error-msg"></span>
-                @* </div> *@
-                @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"] as string))
+                <span asp-validation-for="Email" class="error-msg"></span>
+                @if (!string.IsNullOrEmpty(TempData["SubscriberMessage"]?.ToString()))
                 {
-                    <div class="alert alert-success">@ViewData["ErrorMessage"]</div>
+                    @if (TempData["StatusCode"]?.ToString() == "Ok")
+                    {
+                        <span class="alert alert-success">@TempData["SubscriberMessage"]</span>
+                    }
+                    else
+                    {
+                        <span class="alert alert-danger">@TempData["SubscriberMessage"]</span>
+                    }
                 }
+                @* else
+                {
+                    <span>Error</span>
+                } *@
+
                 <div class="policy">
                     <p><span>*</span>Yes, I agree to the <a asp-controller="About" asp-action="Terms">terms</a> and <a asp-controller="About" asp-action="PrivacyPolicy">privacy policy.</a></p>
                 </div>

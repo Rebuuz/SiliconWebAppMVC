@@ -30,11 +30,26 @@ public class HomeController : Controller
             using var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await http.PostAsync($"http://localhost:5295/api/Subscribers?email={model.Email}", content);
 
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    ViewData["You Are Subscribed"] = true;
+            //}
+
             if (response.IsSuccessStatusCode)
             {
-                ViewData["You Are Subscribed"] = true;
+                TempData["StatusCode"] = "Ok";
+                TempData["SubscriberMessage"] = "You are now subscribed!";
             }
+            else if (response.StatusCode == HttpStatusCode.Conflict)
+            {
+                TempData["StatusCode"] = "Conflict";
+                TempData["ConflictMessage"] = "Email already subscribed.";
+            }
+
         }
+        
+        
+
 
         return RedirectToAction("Index", "Home", "newsletter");
     }
