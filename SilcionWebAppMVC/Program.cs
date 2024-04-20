@@ -24,25 +24,17 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 //other services
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserRepository>();
-//builder.Services.AddScoped<UserService>();
-//builder.Services.AddScoped<UserManager>();
 builder.Services.AddScoped<AddressManager>();
 builder.Services.AddScoped<AccountManager>();
 
 //cookie
 builder.Services.ConfigureApplicationCookie(x =>
 {
-    //hinders others from reading the cookie information
     x.Cookie.HttpOnly = true;
-    //path for sign in if not alredy signed in and trying to access account page
     x.LoginPath = "/signin";
-    //authorize - protecting pages that should not be accessable when not signed in
     x.LogoutPath = "/signout";
-    //user gets automatically signed out after 60 minutes and have to sign in again
     x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    //if user has been inactive and then become active again within 60minuites, time resets.
     x.SlidingExpiration = true;
-    //requires https - standard
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
